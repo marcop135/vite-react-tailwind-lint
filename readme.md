@@ -1,7 +1,7 @@
-# tailwind-test
+# vite-react-tailwind-starter
 
-A minimal starter template focused on experimenting with [Tailwind CSS](https://tailwindcss.com/) in a modern [React (v17)](https://react.dev/) project, powered by [Vite](https://vitejs.dev/).  
-This setup demonstrates how to efficiently develop, lint, and format Tailwind-based UIs with a streamlined toolchain and best practices.
+A robust and up-to-date starter for building [Tailwind CSS](https://tailwindcss.com/)-powered user interfaces in [React (v17)](https://react.dev/), leveraging the speed and simplicity of [Vite](https://vitejs.dev/).  
+This setup streamlines development, linting, and formatting for Tailwind-based UIs, following best practices with a thoughtfully curated toolchain.
 
 ## Scripts
 
