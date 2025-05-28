@@ -1,5 +1,5 @@
-import './style.css'
+import "./style.css";
 
-document.querySelector('#app').innerHTML = /*html*/`
-  <h1 class="text-3xl font-bold">Hellooooo world!</h1>
-`
+document.querySelector("#app").innerHTML = /*html*/ `
+  <h1 class="text-3xl font-bold font">Hellooooo world!</h1>
+`;
