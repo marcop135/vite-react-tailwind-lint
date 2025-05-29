@@ -1,69 +1,95 @@
-# vite-react-tailwind-lint
+# 🚀 Vite + React + Tailwind CSS Starter
 
-A robust and up-to-date starter for building [Tailwind CSS](https://tailwindcss.com/)-powered user interfaces in [React (v19)](https://react.dev/), leveraging the speed and simplicity of [Vite](https://vitejs.dev/).  
-This setup streamlines development, linting, and formatting for Tailwind-based UIs, following best practices with a thoughtfully curated toolchain.
+A modern, fast starter template using [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), and [Vite](https://vitejs.dev/).  
+Includes built-in linting, formatting, and best practices for rapid development.
 
-## Requirements
+## ✨ Features
 
-* [Node.js](https://nodejs.org/en) (v22+)
-* [degit](https://github.com/Rich-Harris/degit)
+* ⚡️ Instant dev server with Vite  
+* 🎨 Tailwind CSS for utility-first styling  
+* ⚛️ React 19 with zero-config JSX  
+* 🧼 Linting: HTMLHint, ESLint, Stylelint  
+* 🖌️ Prettier + Tailwind plugin for class sorting  
+* 🔄 Hot Module Replacement (HMR)  
+* 🛠️ Ready-to-use scripts: `dev`,     `build`,  `preview`  
+* 📦 Minimal, production-ready config  
+* 🧩 Easily extendable toolchain  
 
-## Getting Started
+## 📦 Tech Stack
+
+* **Build:** Vite  
+* **Language:** React 19 (JSX, ESNext)  
+* **Styles:** Tailwind CSS, PostCSS  
+* **Linting:** ESLint, Stylelint, HTMLHint  
+* **Formatting:** Prettier, prettier-plugin-tailwindcss  
+* **Tooling:** Node.js, degit  
+
+## ⚙️ Requirements
+
+* [Node.js](https://nodejs.org/en) (v18+)  
+* [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`)  
+
+## 🚀 Getting Started
 
 ```bash
 npx degit marcop135/vite-react-tailwind-lint my-app
 cd my-app
 npm install
-npm run dev
+npm run dev 
 ```
 
-Now you can start customizing your project by editing the following files:
+## 🧪 Scripts
 
-* `index.html`: The main HTML file.
-* `src/main.jsx`: The entry point for your React application.
-* `src/style.css`: Your global Tailwind CSS styles.
+```bash
+npm run dev       # Start dev server
+npm run build     # Build for production
+npm run preview   # Preview production build
+```
 
-## Scripts
+Now edit the following files to start customizing:
 
-* `dev`: Start the development server (`npm run dev`).
-* `build`: Build the project for production (`npm run build`).
-* `preview`: Preview the production build (`npm run preview`).
+* `index.html` – Main HTML file
+* `src/main.jsx` – React entry point
 
-## Dependencies
+## 🧹 Linting & Formatting
 
-* `vite`: Fast build tool and development server.
-* `tailwindcss`: Utility-first CSS framework.
-* `react` and `react-dom`: For building user interfaces.
+This setup includes:
 
-## Linting & Formatting
+* `eslint` – Lint JavaScript
+* `stylelint` – Lint CSS/SCSS
+* `htmlhint` – Lint HTML/JSX
+* `prettier` – Format code + Tailwind class sorting
 
-This project uses additional tools to enhance the development experience:
+### 📌 Run manually:
 
-* **HTMLHint**: Lints HTML/JSX files for best practices.
-* **Stylelint**: Lints CSS (including SCSS) for style consistency.
-* **ESLint**: Lints JavaScript and TypeScript code for code quality and consistency.
-* **Prettier (with [Tailwind CSS plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss))**: Automatically formats code and orders Tailwind classes in your markup for consistency and readability.
+```bash
+npx eslint "src/**/*.{js,jsx}"
+npx stylelint "src/**/*.{css,scss}"
+npx htmlhint "src/**/*.html"
+```
 
-## Documentation
+---
 
-* [Tailwind CSS with Vite](https://tailwindcss.com/docs/installation/using-vite)
-* [Vite Documentation](https://vitejs.dev/guide/)
-* [Tailwind CSS Configuration](https://tailwindcss.com/docs/configuration)
-* [HTMLHint Documentation](https://htmlhint.com/)
-* [Stylelint Documentation](https://stylelint.io/)
-* [ESLint Documentation](https://eslint.org/docs/latest/)
-* [Prettier Documentation](https://prettier.io/)
+## 📚 Official Documentation
+
+* [Tailwind CSS + Vite](https://tailwindcss.com/docs/installation/using-vite)
+* [Vite Guide](https://vitejs.dev/guide/)
+* [Tailwind Config](https://tailwindcss.com/docs/configuration)
+* [HTMLHint](https://htmlhint.com/)
+* [Stylelint](https://stylelint.io/)
+* [ESLint](https://eslint.org/docs/latest/)
+* [Prettier](https://prettier.io/)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve this template.
+Contributions welcome! Open issues or submit PRs to improve this template.
 
 ## 📝 License
 
-This project is licensed under the [MIT License](LICENSE).
+Licensed under the [MIT](./LICENSE) License.
 
 ## 👤 Author
 
-Created with passion by [Marco Pontili](https://marcopontili.com) - [GitHub](https://github.com/marcop135).
+Created with passion by [Marco Pontili](https://marcopontili.com) - [GitHub](https://github.com/marcop135)
