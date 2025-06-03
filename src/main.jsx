@@ -47,19 +47,10 @@ function App() {
           <small className='text-xs'>
             This project uses the{' '}
             <a
-              href='https://github.com/marcop135/vite-vanilla-sass-lint'
+              href='https://github.com/marcop135/vite-react-tailwind-lint'
               className='underline hover:text-blue-500'
             >
-              vite-vanilla-sass-lint
-            </a>{' '}
-            starter by{' '}
-            <a
-              href='https://marcopontili.com'
-              className='underline hover:text-blue-500'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              @marcop135
+              vite-react-tailwind-lint
             </a>
             .
           </small>
