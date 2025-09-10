@@ -25,7 +25,7 @@
     "stylelint": "^16.19.1",
     "stylelint-config-standard-scss": "^15.0.1",
     "tailwindcss": "^4.1.7",
-    "vite": "^6.3.5",
+    "vite": "^6.3.6",
     "vite-plugin-eslint2": "^5.0.3",
     "vite-plugin-stylelint": "^6.0.0"
   }
