@@ -11,4 +11,5 @@ export default {
   arrowParens: 'always',
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'css',
+  plugins: ['prettier-plugin-tailwindcss'],
 };

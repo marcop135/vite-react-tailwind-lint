@@ -47,7 +47,8 @@ npm run dev       # Start dev server
 npm run build     # Build for production
 npm run preview   # Preview production build
 npm run lint      # Lint JS, JSX, TS, TSX, CSS, SCSS, HTML, and MD files
-npm run format    # Format html, css, js, jsx, jsx, ts, tsx, and MD files
+npm run lint:fix  # Lint and auto-fix issues where possible
+npm run format    # Format html, css, js, jsx, ts, tsx, and MD files
 ```
 
 Now edit the following files to start customizing:
