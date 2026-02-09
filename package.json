@@ -44,6 +44,6 @@
     "vite": "^6.3.5",
     "vite-plugin-eslint2": "^5.0.3",
     "vite-plugin-stylelint": "^6.0.0",
-    "vitest": "^2.1.8"
+    "vitest": "^4.0.18"
   }
 }
