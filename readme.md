@@ -6,22 +6,34 @@ Includes built-in linting, formatting, and best practices for rapid development.
 ## ✨ Features
 
 - ⚡️ Instant dev server with Vite
-- 🎨 Tailwind CSS
-- ⚛️ React
-- 🧼 HTMLHint, ESLint, Stylelint
+- 🎨 Tailwind CSS with configuration
+- ⚛️ React 19 with component-based architecture
+- 🧼 HTMLHint, ESLint (with React plugins), Stylelint
 - 🖌️ Prettier + Tailwind plugin
-- 🛠️ Ready-to-use scripts: `dev`, `build`, `preview`
+- 🧪 Vitest testing framework
+- 🛡️ React Error Boundary
+- ⚡️ Performance optimizations (React.memo, lazy loading)
+- 🔍 Bundle analyzer for build optimization
+- 🪝 Pre-commit hooks with Husky + lint-staged
+- 🛠️ Ready-to-use scripts: `dev`, `build`, `preview`, `test`
 - 📦 Minimal, production-ready config
 - 🧩 Easily extendable toolchain
 
 ## 🧪 Project Structure
 
-- `src/` – Source files (HTML, JS, SCSS, assets)
-- `dist/` – Production build output
+- `src/` – Source files
+  - `components/` – React components
+  - `test/` – Test setup and utilities
+  - `main.jsx` – React entry point
+  - `style.css` – Global styles
+- `dist/` – Production build output (gitignored)
 - `index.html` – Entry HTML file
 - `vite.config.js` – Vite config
+- `vitest.config.js` – Vitest config
+- `tailwind.config.js` – Tailwind CSS config
 - `eslint.config.js`, `.stylelintrc`, `.htmlhintrc` – Lint configs
 - `prettier.config.mjs` – Formatting config
+- `.lintstagedrc.js` – Lint-staged config
 - `package.json` – Scripts & dependencies
 
 ---
@@ -43,27 +55,33 @@ npm run dev
 ## 🧪 Scripts
 
 ```bash
-npm run dev       # Start dev server
-npm run build     # Build for production
-npm run preview   # Preview production build
-npm run lint      # Lint JS, JSX, TS, TSX, CSS, SCSS, HTML, and MD files
-npm run lint:fix  # Lint and auto-fix issues where possible
-npm run format    # Format html, css, js, jsx, ts, tsx, and MD files
+npm run dev          # Start dev server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Lint JS, JSX, CSS, HTML files
+npm run lint:fix     # Lint and auto-fix issues where possible
+npm run format       # Format html, css, js, jsx, and MD files
+npm test             # Run tests with Vitest
+npm run test:ui      # Run tests with UI
+npm run test:coverage # Run tests with coverage
+npm run analyze      # Build and analyze bundle size
 ```
 
 Now edit the following files to start customizing:
 
 - `index.html` – Main HTML file
 - `src/main.jsx` – React entry point
+- `src/components/` – React components
 
 ## 🧹 Linting & Formatting
 
 Includes:
 
-- `eslint` – Lint JavaScript
-- `stylelint` – Lint CSS/SCSS
-- `htmlhint` – Lint HTML/JSX
+- `eslint` – Lint JavaScript/JSX (with React plugins)
+- `stylelint` – Lint CSS
+- `htmlhint` – Lint HTML
 - `prettier` – Format code
+- `husky` + `lint-staged` – Pre-commit hooks
 
 ### 📌 Run automatically:
 
@@ -72,23 +90,37 @@ npm run lint
 npm run format
 ```
 
+Pre-commit hooks will automatically run linting and formatting on staged files.
+
 ### 📌 Run manually:
 
 Linting & Formatting Commands:
 
 ```bash
 # Lint all JSX files in src/
-npx eslint "src/**/*.{js,jsx,ts,tsx}"
+npx eslint "src/**/*.{js,jsx}"
 
 # Lint all CSS files in src/
-npx stylelint "src/*.css"
+npx stylelint "src/**/*.css"
 
-# Lint all HTML files in the project (root, src/, dist/, etc.)
+# Lint all HTML files in the project
 npx htmlhint "**/*.html"
 
-# Check code formatting for all JS, JSX, TS, TSX, CSS, SCSS, HTML, and Markdown files in src/
-npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,scss,html,md}"
+# Check code formatting
+npx prettier --check "src/**/*.{js,jsx,css,html,md}"
 ```
+
+## 🧪 Testing
+
+This project uses [Vitest](https://vitest.dev/) for testing.
+
+```bash
+npm test              # Run tests once
+npm run test:ui       # Run tests with UI
+npm run test:coverage # Run tests with coverage
+```
+
+Test files should be placed alongside components or in a `__tests__` directory.
 
 ---
 
@@ -97,16 +129,19 @@ npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,scss,html,md}"
 - [Tailwind CSS + Vite](https://tailwindcss.com/docs/installation/using-vite)
 - [Vite Guide](https://vitejs.dev/guide/)
 - [Tailwind Config](https://tailwindcss.com/docs/configuration)
+- [React](https://react.dev/)
+- [Vitest](https://vitest.dev/)
 - [HTMLHint](https://htmlhint.com/)
 - [Stylelint](https://stylelint.io/)
 - [ESLint](https://eslint.org/docs/latest/)
 - [Prettier](https://prettier.io/)
+- [Husky](https://typicode.github.io/husky/)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! Open issues or submit PRs.
+Contributions welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## 👤 Author
 
