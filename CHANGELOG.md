@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.4] - 2026-04-17
+
+### Fixed
+
+- Restored Netlify production rendering by deploying a complete `dist` publish with matching hashed assets.
+- Added `netlify.toml` with explicit build (`npm run build`) and publish (`dist`) settings to prevent stale index/asset mismatches.
+
+### Changed
+
+- Split `App` from `src/main.jsx` into `src/App.jsx` to keep entrypoint rendering minimal and stable.
+- Updated Vitest test wiring and app tests for consistent local and CI execution.
+
 ## [1.4.3] - 2026-04-17
 
 ### Changed
@@ -57,6 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial release with basic Vite + React + Tailwind CSS setup.
 
 [1.4.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3
+[1.4.4]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4
 [1.4.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.2
 [1.4.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.0
 [1.3.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.3.0

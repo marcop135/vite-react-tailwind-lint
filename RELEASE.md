@@ -4,8 +4,8 @@ This file centralizes release metadata for `vite-react-tailwind-lint`.
 
 ## Latest Release
 
-- Version: `1.4.3`
-- Tag: [`v1.4.3`](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3)
+- Version: `1.4.4`
+- Tag: [`v1.4.4`](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4)
 - Date: `2026-04-17`
 - Branch: `master`
 
@@ -14,10 +14,11 @@ This file centralizes release metadata for `vite-react-tailwind-lint`.
 - Release history: [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases)
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
 
-## 1.4.3 Highlights
+## 1.4.4 Highlights
 
-- Closed all open pull requests and cleaned security-related request queues.
-- Removed all non-`master` branches locally and on remote.
+- Fixed blank Netlify production rendering caused by missing hashed JS/CSS assets.
+- Added `netlify.toml` build and publish configuration to keep deploy output consistent.
+- Refined app entry and tests (`src/App.jsx`, Vitest wiring) for reliable validation and deploy confidence.
 
 ## Quick Release Commands
 
