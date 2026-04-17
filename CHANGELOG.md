@@ -55,3 +55,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0] - Previous Release
 
 Initial release with basic Vite + React + Tailwind CSS setup.
+
+[1.4.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3
+[1.4.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.2
+[1.4.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.0
+[1.3.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.3.0

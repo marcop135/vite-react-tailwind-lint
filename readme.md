@@ -3,6 +3,13 @@
 A modern, fast starter template using [Vite](https://vitejs.dev/), [React](https://react.dev/), and [Tailwind CSS](https://tailwindcss.com/).
 Includes built-in linting, formatting, and best practices for rapid development.
 
+## 📦 Release Info
+
+- Latest release: [`v1.4.3`](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3)
+- Full release history: [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases)
+- Detailed changes per version: [CHANGELOG.md](./CHANGELOG.md)
+- Release operations and checklist: [RELEASE.md](./RELEASE.md)
+
 ## ✨ Features
 
 - ⚡️ Instant dev server with Vite

@@ -54,6 +54,20 @@ npm run format    # Format code with Prettier
 3. Update documentation if needed
 4. Submit a pull request with a clear description
 
+## Release Information
+
+- Current release details are tracked in [RELEASE.md](./RELEASE.md).
+- User-facing change history is tracked in [CHANGELOG.md](./CHANGELOG.md).
+- Published tags and release notes are available in [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases).
+
+### Release Workflow
+
+1. Bump version: `npm version patch --no-git-tag-version`
+2. Update `CHANGELOG.md` and `RELEASE.md`
+3. Commit release files to `master`
+4. Create annotated tag: `git tag -a vX.Y.Z -m "X.Y.Z"`
+5. Push branch and tag: `git push origin master && git push origin refs/tags/vX.Y.Z`
+
 ## Questions?
 
 Feel free to open an issue for any questions or concerns.
