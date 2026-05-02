@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-05-02
+
+### Added
+
+- Dependabot auto-merge workflow that enables squash auto-merge for patch and minor updates; major updates remain manual.
+- Scheduled biweekly `npm update` workflow that runs on the 1st and 15th of each month (plus `workflow_dispatch`), verifies via lint + vitest + build + audit, and opens a PR with the lockfile diff.
+- `.github/dependabot.yml` configuration for npm and github-actions ecosystems, targeting `develop` as the integration branch.
+
+### Changed
+
+- Adopted `develop` as the integration branch where bumps soak before promoting to `master` via tagged release.
+
+## [1.4.5] - 2026-04-28
+
+### Changed
+
+- Bumped package version to 1.4.5 for tagged release; no functional changes.
+
 ## [1.4.4] - 2026-04-17
 
 ### Fixed
@@ -68,8 +86,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release with basic Vite + React + Tailwind CSS setup.
 
-[1.4.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3
+[1.5.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.5.0
+[1.4.5]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.5
 [1.4.4]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4
+[1.4.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3
 [1.4.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.2
 [1.4.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.0
 [1.3.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.3.0
