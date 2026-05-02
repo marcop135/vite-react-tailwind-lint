@@ -1,7 +1,7 @@
 {
   "name": "vite-react-tailwind-lint",
   "private": true,
-  "version": "1.6.0",
+  "version": "1.6.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "release:check": "npm run lint && npx vitest run && npm run build && npm audit --audit-level=moderate",
     "analyze": "vite build --mode analyze",
     "prepare": "husky"
   },

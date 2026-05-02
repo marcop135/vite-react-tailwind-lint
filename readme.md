@@ -5,7 +5,7 @@ Includes built-in linting, formatting, and best practices for rapid development.
 
 ## 📦 Release Info
 
-- Latest release: [`v1.4.4`](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4)
+- Latest release: [`v1.6.1`](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.1)
 - Full release history: [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases)
 - Detailed changes per version: [CHANGELOG.md](./CHANGELOG.md)
 - Release operations and checklist: [RELEASE.md](./RELEASE.md)
