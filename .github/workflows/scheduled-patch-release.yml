@@ -1,0 +1,55 @@
+name: Scheduled patch release
+
+on:
+  schedule:
+    - cron: '0 9 3,17 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: scheduled-patch-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: 22.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          HUSKY: 0
+
+      - name: Release check (lint, test, build, audit)
+        run: npm run release:check
+        env:
+          HUSKY: 0
+
+      - name: Bump patch and changelog
+        id: bump
+        run: node scripts/bump-patch-maintenance.mjs
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Commit version bump and push tag on develop
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
+          git push origin HEAD:develop
+          git tag -a "v${{ steps.bump.outputs.version }}" -m "${{ steps.bump.outputs.version }}"
+          git push origin "refs/tags/v${{ steps.bump.outputs.version }}"
