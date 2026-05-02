@@ -16,7 +16,19 @@ This file centralizes release metadata for `vite-react-tailwind-lint`.
 
 ## 1.6.1 Highlights
 
-- GitHub Actions: `release:check`, tag-driven `release.yml`, scheduled patch bumps on `develop`, and biweekly `npm update` PRs (see [CHANGELOG.md](./CHANGELOG.md)).
+Automation around tagged releases and patch bumps on `develop`, without auto-merging to `master` from Actions.
+
+### Added
+
+- **Scheduled patch release**: `.github/workflows/scheduled-patch-release.yml` (3rd & 17th UTC) bumps patch via [`scripts/bump-patch-maintenance.mjs`](./scripts/bump-patch-maintenance.mjs): updates `package.json`/lockfile, prepends **[CHANGELOG.md](./CHANGELOG.md)** on `develop`, commits and pushes `develop`, pushes tag `v*`. Does **not** merge into `master` (avoids branch-protection pitfalls with default `GITHUB_TOKEN`).
+- **Tag-driven GitHub Release**: [.github/workflows/release.yml](./.github/workflows/release.yml) on `push` of `v*` (or `workflow_dispatch` with a tag input) runs `npm run release:check`, then creates/updates the GitHub Release (`softprops/action-gh-release`) with generated contributor notes.
+
+### Changed
+
+- **`release:check`**: lint + Vitest + `vite build` + `npm audit --audit-level=moderate`; reused by CI and scheduled npm workflows.
+- **CI branch filters**: push and `pull_request` workflows run for `main`, `master`, and `develop`.
+
+See **[CHANGELOG.md — 1.6.1](./CHANGELOG.md#161---2026-05-02)** and the [v1.6.1 GitHub Release](https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.1).
 
 ## Quick Release Commands
 
