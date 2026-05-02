@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Scheduled patch release workflow (`scheduled-patch-release.yml`, 3rd & 17th UTC) bumps semver patch via `scripts/bump-patch-maintenance.mjs`, prepends a changelog section on `develop`, commits/pushes **develop**, and pushes the **tag** (`v*`). It does **not** merge `develop` → `master` (avoid branch-protection pitfalls with `GITHUB_TOKEN`).
-- `release.yml`: on `push` of `v*` tags (plus `workflow_dispatch` with tag input), runs `npm run release:check`, then publishes a GitHub Release with `generate_release_notes` (`softprops/action-gh-release`).
+- `release.yml`: on `push` of `v*` tags (plus `workflow_dispatch` with tag input), runs `npm run release:check`, then publishes or updates the GitHub Release with `softprops/action-gh-release` (`generate_release_notes: false`).
 
 ### Changed
 
