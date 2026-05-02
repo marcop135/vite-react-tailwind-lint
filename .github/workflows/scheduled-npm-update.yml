@@ -29,12 +29,8 @@ jobs:
         env:
           HUSKY: 0
 
-      - name: Verify lint, test, build, audit
-        run: |
-          npm run lint
-          npx vitest run
-          npm run build
-          npm audit --audit-level=moderate
+      - name: Release check (lint, test, build, audit)
+        run: npm run release:check
         env:
           HUSKY: 0
 
@@ -49,7 +45,7 @@ jobs:
             Automated `npm update` from the biweekly maintenance workflow.
 
             - Bumps within existing semver ranges only.
-            - Verified locally in CI: lint + vitest + build + `npm audit --audit-level=moderate`.
+            - Verified via `npm run release:check` (lint + vitest + build + audit).
           labels: |
             dependencies
             automated
