@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-05-02
+
+### Added
+
+- CI workflow (`.github/workflows/ci.yml`) that runs lint, vitest, build, and audit on push and pull_request to `master` and `develop`. Provides the required `lint-and-test (22.x)` status check that gates Dependabot auto-merge.
+
+### Changed
+
+- Enabled branch protection on `develop` requiring the `lint-and-test (22.x)` check to pass before merge. Patch and minor Dependabot PRs now wait for CI green before auto-merging.
+
 ## [1.5.0] - 2026-05-02
 
 ### Added
@@ -86,6 +96,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release with basic Vite + React + Tailwind CSS setup.
 
+[1.6.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.0
 [1.5.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.5.0
 [1.4.5]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.5
 [1.4.4]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4
