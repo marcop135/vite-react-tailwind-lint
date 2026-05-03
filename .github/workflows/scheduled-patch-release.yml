@@ -11,10 +11,13 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
-  patch:
+  release:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
     steps:
       - name: Checkout develop
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -44,12 +47,68 @@ jobs:
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: Commit version bump and push tag on develop
+      - name: Push release branch and open PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.bump.outputs.version }}
         run: |
+          set -euo pipefail
+          BRANCH="release/v${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
           git add package.json CHANGELOG.md
-          git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
-          git push origin HEAD:develop
-          git tag -a "v${{ steps.bump.outputs.version }}" -m "${{ steps.bump.outputs.version }}"
-          git push origin "refs/tags/v${{ steps.bump.outputs.version }}"
+          git commit -m "chore(release): v${VERSION}"
+          git push origin "$BRANCH"
+          PR_URL=$(gh pr create \
+            --base develop \
+            --head "$BRANCH" \
+            --title "chore(release): v${VERSION}" \
+            --body "Automated patch release v${VERSION}.")
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Enable auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+        run: gh pr merge --auto --squash --delete-branch "$PR_URL"
+
+      - name: Wait for PR to merge
+        timeout-minutes: 20
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+        run: |
+          set -euo pipefail
+          while :; do
+            STATE=$(gh pr view "$PR_URL" --json state --jq .state)
+            echo "PR state: $STATE"
+            case "$STATE" in
+              MERGED) exit 0 ;;
+              CLOSED) echo "PR was closed without merging" >&2; exit 1 ;;
+            esac
+            sleep 20
+          done
+
+      - name: Tag merged commit on develop
+        id: tag
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          set -euo pipefail
+          git fetch origin develop
+          git checkout develop
+          git reset --hard origin/develop
+          git tag -a "v${VERSION}" -m "${VERSION}"
+          git push origin "refs/tags/v${VERSION}"
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: release
+    uses: ./.github/workflows/release.yml
+    permissions:
+      contents: write
+    with:
+      tag: ${{ needs.release.outputs.tag }}

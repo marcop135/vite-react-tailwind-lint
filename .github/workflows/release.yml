@@ -10,6 +10,12 @@ on:
         description: 'Existing tag (e.g. v1.2.3) to publish release notes for'
         required: true
         type: string
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Existing tag (e.g. v1.2.3) to publish release notes for'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -18,10 +24,23 @@ jobs:
   verify-and-publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve tag
+        id: resolve
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if [ -n "${INPUT_TAG:-}" ]; then
+            TAG="$INPUT_TAG"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref }}
+          ref: ${{ steps.resolve.outputs.tag }}
 
       - name: Setup Node.js
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
@@ -43,4 +62,4 @@ jobs:
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65
         with:
           generate_release_notes: false
-          tag_name: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref_name }}
+          tag_name: ${{ steps.resolve.outputs.tag }}
