@@ -69,28 +69,11 @@ jobs:
           echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
-      - name: Enable auto-merge
+      - name: Merge release PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ steps.pr.outputs.pr_url }}
-        run: gh pr merge --auto --squash --delete-branch "$PR_URL"
-
-      - name: Wait for PR to merge
-        timeout-minutes: 20
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ steps.pr.outputs.pr_url }}
-        run: |
-          set -euo pipefail
-          while :; do
-            STATE=$(gh pr view "$PR_URL" --json state --jq .state)
-            echo "PR state: $STATE"
-            case "$STATE" in
-              MERGED) exit 0 ;;
-              CLOSED) echo "PR was closed without merging" >&2; exit 1 ;;
-            esac
-            sleep 20
-          done
+        run: gh pr merge --squash --delete-branch --admin "$PR_URL"
 
       - name: Tag merged commit on develop
         id: tag
