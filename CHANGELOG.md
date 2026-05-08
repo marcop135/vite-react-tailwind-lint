@@ -2,6 +2,12 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.5] - 2026-05-08
+
+- **Style:** Redesign OG hero as three-icon row (Vite, React, Tailwind) over a sky-400 -> 700 gradient that aligns with the deployed `bg-sky-300` light theme; widen `soft` filter region so the Tailwind shadow no longer clips.
+- **Docs:** Tighten changelog prose (~50% shorter per release); drop the `[vX.Y.Z]:` tag-link footer; remove the Release Info section from README.
+- **Chore:** Stop the scheduled patch bumper from re-appending changelog footer links.
+
 ## [1.6.4] - 2026-05-08
 
 - **Docs:** New README hero (logo trio, OG/WhatsApp safe); source moves to `docs/og/`.
