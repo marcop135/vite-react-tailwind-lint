@@ -2,6 +2,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.6.4] - 2026-05-08
+
+- **Docs:** Rework README hero into a Vite, React, Tailwind logo trio on a light-gray background that holds up at OG and WhatsApp thumbnail sizes; replace `docs/proposals/` with `docs/og/` as the canonical hero source.
+- **Feat:** Serve `public/og/hero.png` (1200x630) plus `og:` and `twitter:` card meta in `index.html` so Netlify deploy shares render the hero on Slack, WhatsApp, iMessage, and Twitter.
+- **Feat:** Generate a cross-browser favicon set (`favicon.ico` 16/32/48 multi-res, `favicon-96x96.png`, `apple-touch-icon.png` 180x180, `web-app-manifest-192/512.png`, `site.webmanifest`) from `public/vite.svg`; `index.html` ships the full `link rel` set plus dual `theme-color` hints.
+- **Feat:** Add `docs/og/hero-github.png` (1280x640, ~84 KB) for the GitHub repo Social preview upload.
+- **Chore:** New `docs/og/render.mjs` and `docs/og/favicons.mjs` regenerate the asset set from source SVGs via the neighbouring `draw` repo's Playwright, no new dev deps.
+
 ## [1.6.3] - 2026-05-08
 
 - **Docs:** Rename `readme.md` to `README.md` and add a hero image at the top.
