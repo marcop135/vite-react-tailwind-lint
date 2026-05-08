@@ -1,7 +1,7 @@
 # 🚀 Vite + React + Tailwind CSS Starter
 
 <p align="center">
-  <img src="docs/proposals/hero-3-terminal.png" alt="vite-react-tailwind-lint hero" width="840" />
+  <img src="docs/og/hero.png" alt="vite-react-tailwind-lint hero" width="840" />
 </p>
 
 A modern, fast starter template using [Vite](https://vitejs.dev/), [React](https://react.dev/), and [Tailwind CSS](https://tailwindcss.com/).
