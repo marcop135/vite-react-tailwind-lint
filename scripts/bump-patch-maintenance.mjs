@@ -5,15 +5,6 @@ import url from 'url';
 
 const ROOT = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '..');
 
-function resolveGhRepoSlug() {
-  const fromEnv = process.env.GITHUB_REPOSITORY;
-  if (fromEnv) return fromEnv;
-  const changelog = readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8');
-  const m = changelog.match(/\[[^\]]+\]:\s*https:\/\/github\.com\/([^/\s]+\/[^/\s]+)\//u);
-  if (m?.[1]) return m[1];
-  throw new Error('Set GITHUB_REPOSITORY or add a github.com link in CHANGELOG.md');
-}
-
 function bumpPatch(semver) {
   const m = semver.trim().match(/^(\d+)\.(\d+)\.(\d+)/u);
   if (!m) throw new Error(`Invalid semver patch base: "${semver}"`);
@@ -29,17 +20,6 @@ function prependChangelogBlock(changelogBody, section) {
   return `${before.trimEnd()}\n\n${section.trim()}\n\n${after}`;
 }
 
-function insertFooterLink(markdown, newVersion, repoSlug) {
-  const line = `[${newVersion}]: https://github.com/${repoSlug}/releases/tag/v${newVersion}`;
-  const re = /\n\[[^\]]+\]:\s*https:\/\/github\.com\/[^\n]+\n/u;
-  const match = re.exec(markdown);
-  if (match) {
-    const insertPos = match.index + 1;
-    return `${markdown.slice(0, insertPos)}${line}\n${markdown.slice(insertPos)}`;
-  }
-  return `${markdown.trimEnd()}\n\n${line}\n`;
-}
-
 const pkgPath = path.join(ROOT, 'package.json');
 const changelogPath = path.join(ROOT, 'CHANGELOG.md');
 
@@ -51,7 +31,6 @@ pkg.version = newVersion;
 writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 
 const changelog = readFileSync(changelogPath, 'utf8');
-const repoSlug = resolveGhRepoSlug();
 const isoDate = process.env.CHANGELOG_DATE ?? new Date().toISOString().slice(0, 10);
 
 const section = [
@@ -60,9 +39,7 @@ const section = [
   '- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.',
 ].join('\n');
 
-let next = prependChangelogBlock(changelog, section);
-next = insertFooterLink(next, newVersion, repoSlug);
-writeFileSync(changelogPath, next);
+writeFileSync(changelogPath, prependChangelogBlock(changelog, section));
 
 const outPath = process.env.GITHUB_OUTPUT;
 if (outPath) {
