@@ -1,127 +1,74 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+**Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
 ## [1.6.3] - 2026-05-08
 
-### Changed
-
-- Renamed `readme.md` to `README.md` and added a hero image at the top.
-- Removed `RELEASE.md`; release flow lives in `CHANGELOG.md` and `.github/workflows/`.
-- Pruned stale `RELEASE.md` links from `README.md` and `CONTRIBUTING.md`.
+- **Docs:** Rename `readme.md` to `README.md` and add a hero image at the top.
+- **Docs:** Prune stale `RELEASE.md` links from `README.md` and `CONTRIBUTING.md`.
+- **Chore:** Remove `RELEASE.md`; release flow lives in `CHANGELOG.md` and `.github/workflows/`.
 
 ## [1.6.2] - 2026-05-08
 
-### Changed
-
-- Automated maintenance patch (scheduled workflow). Tag triggers GitHub Release (generated notes); production deploy follows the branch configured in Netlify (often `master`).
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
 
 ## [1.6.1] - 2026-05-02
 
-### Added
-
-- Scheduled patch release workflow (`scheduled-patch-release.yml`, 3rd & 17th UTC) bumps semver patch via `scripts/bump-patch-maintenance.mjs`, prepends a changelog section on `develop`, commits/pushes **develop**, and pushes the **tag** (`v*`). It does **not** merge `develop` → `master` (avoid branch-protection pitfalls with `GITHUB_TOKEN`).
-- `release.yml`: on `push` of `v*` tags (plus `workflow_dispatch` with tag input), runs `npm run release:check`, then publishes or updates the GitHub Release with `softprops/action-gh-release` (`generate_release_notes: false`).
-
-### Changed
-
-- `release:check` aggregates lint + vitest + build + npm audit (`moderate`); CI (`ci.yml`) and scheduled npm workflow use it.
-- CI runs on `main`, `master`, and `develop` for push and pull_request.
+- **Feat:** Scheduled patch workflow bumps semver, updates changelog, and pushes `develop` plus the `v*` tag.
+- **Build:** `release:check` aggregates lint, Vitest, build, and `npm audit --audit-level=moderate`.
+- **CI:** New `release.yml` runs `release:check` and publishes the GitHub Release on `v*` tag push.
+- **CI:** Run CI on push and pull_request for `main`, `master`, and `develop`.
 
 ## [1.6.0] - 2026-05-02
 
-### Added
-
-- CI workflow (`.github/workflows/ci.yml`) that runs lint, vitest, build, and audit on push and pull_request to `main`, `master`, and `develop`. Provides the required `lint-and-test (22.x)` status check that gates Dependabot auto-merge.
-
-### Changed
-
-- Enabled branch protection on `develop` requiring the `lint-and-test (22.x)` check to pass before merge. Patch and minor Dependabot PRs now wait for CI green before auto-merging.
+- **CI:** Add `ci.yml` running lint, Vitest, build, and audit on push and PR for `main`, `master`, and `develop`.
+- **Chore:** Require `lint-and-test (22.x)` on `develop`; Dependabot auto-merge waits for CI green.
 
 ## [1.5.0] - 2026-05-02
 
-### Added
-
-- Dependabot auto-merge workflow that enables squash auto-merge for patch and minor updates; major updates remain manual.
-- Scheduled biweekly `npm update` workflow that runs on the 1st and 15th of each month (plus `workflow_dispatch`), verifies via lint + vitest + build + audit, and opens a PR with the lockfile diff.
-- `.github/dependabot.yml` configuration for npm and github-actions ecosystems, targeting `develop` as the integration branch.
-
-### Changed
-
-- Adopted `develop` as the integration branch where bumps soak before promoting to `master` via tagged release.
+- **Feat:** Dependabot auto-merge workflow squash-merges patch and minor updates; majors stay manual.
+- **CI:** Biweekly `npm update` workflow opens a PR after lint, Vitest, build, and audit.
+- **CI:** Configure Dependabot for npm and github-actions ecosystems against `develop`.
+- **Chore:** Adopt `develop` as the integration branch; bumps soak before tagged promotion to `master`.
 
 ## [1.4.5] - 2026-04-28
 
-### Changed
-
-- Bumped package version to 1.4.5 for tagged release; no functional changes.
+- **Chore:** Stamp the 1.4.5 tag as a maintenance snapshot; no code change.
 
 ## [1.4.4] - 2026-04-17
 
-### Fixed
-
-- Restored Netlify production rendering by deploying a complete `dist` publish with matching hashed assets.
-- Added `netlify.toml` with explicit build (`npm run build`) and publish (`dist`) settings to prevent stale index/asset mismatches.
-
-### Changed
-
-- Split `App` from `src/main.jsx` into `src/App.jsx` to keep entrypoint rendering minimal and stable.
-- Updated Vitest test wiring and app tests for consistent local and CI execution.
+- **Fix:** Restore Netlify production rendering by deploying a complete `dist` with matching hashed assets.
+- **Build:** Add `netlify.toml` pinning build to `npm run build` and publish to `dist` to stop asset drift.
+- **Chore:** Split `App` from `src/main.jsx` into `src/App.jsx` to keep the entrypoint minimal.
+- **Chore:** Update Vitest wiring so app tests run consistently locally and in CI.
 
 ## [1.4.3] - 2026-04-17
 
-### Changed
-
-- Closed all open pull requests and cleaned security-related request queues.
-- Removed all non-`master` branches locally and on remote to keep release flow centralized on `master`.
+- **Chore:** Close all open PRs and clear the security request queue.
+- **Chore:** Delete non-`master` branches locally and on remote to centralize release flow.
 
 ## [1.4.2] - 2026-04-17
 
-### Changed
-
-- Ran `npm install` and `npm update` to refresh the dependency tree.
-- Updated `package-lock.json` with the latest resolved npm package versions.
+- **Build:** Update `package-lock.json` with the latest resolved npm package versions.
+- **Chore:** Refresh the dependency tree via `npm install` and `npm update`.
 
 ## [1.4.0] - 2026-02-09
 
-### Added
-
-- React ESLint plugin and hooks plugin for better React linting
-- Vitest testing framework with test setup
-- Husky and lint-staged for pre-commit hooks
-- React error boundary component
-- Bundle analyzer plugin for build optimization
-- Component-based architecture (split main.jsx into separate components)
-- React.memo for performance optimization
-- Lazy loading for main content components
-- Tailwind config file
-- CONTRIBUTING.md and CHANGELOG.md documentation
-- @types/react and @types/react-dom for better TypeScript support
-
-### Changed
-
-- Improved accessibility: navigation now uses proper `<a>` tags with ARIA labels
-- Enhanced ESLint rules: enabled eqeqeq, camelcase warnings, and strict no-undef
-- Updated .gitignore to properly ignore dist folder
-- Refactored code into modular components for better maintainability
-
-### Removed
-
-- TypeScript ESLint parser and plugin (no TypeScript files in project)
-
-### Fixed
-
-- Fixed README inconsistencies
-- Fixed semantic HTML issues in navigation
-- Fixed ESLint configuration to use standard JavaScript parser
+- **Feat:** Add Vitest with setup, Husky plus lint-staged pre-commit hooks, and a React error boundary.
+- **Feat:** Adopt component-based architecture; split `main.jsx` and lazy-load main content with `React.memo`.
+- **Fix:** Fix README inconsistencies, semantic-HTML issues in navigation, and ESLint parser config.
+- **Style:** Improve accessibility with proper `<a>` tags and ARIA labels in navigation.
+- **Docs:** Add `CONTRIBUTING.md` and `CHANGELOG.md`.
+- **Build:** Add ESLint React and hooks plugins, Tailwind config, and a bundle analyzer plugin.
+- **Build:** Add `@types/react` and `@types/react-dom` for editor TypeScript support.
+- **Chore:** Tighten ESLint rules (`eqeqeq`, camelcase warnings, strict `no-undef`) and ignore `dist/`.
+- **Chore:** Remove TypeScript ESLint parser and plugin since no TypeScript files exist.
 
 ## [1.3.0] - Previous Release
 
-Initial release with basic Vite + React + Tailwind CSS setup.
+- **Feat:** Initial release with Vite, React, and Tailwind CSS scaffolding.
 
+[1.6.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.3
 [1.6.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.2
 [1.6.1]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.1
 [1.6.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.0
