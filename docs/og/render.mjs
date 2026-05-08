@@ -1,16 +1,19 @@
-// Renders SVG hero proposals to PNG at 1200x630.
+// Renders SVG hero source(s) to PNG at 1200x630 into public/og/.
 // Reuses Playwright already installed in ../draw/node_modules to avoid
 // adding a dev dep to this starter repo. One-off helper, not wired into
 // scripts.
 import { createRequire } from "node:module";
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const drawNm = resolve(here, "../../../draw/node_modules");
+const outDir = resolve(here, "../../public/og");
 const require = createRequire(join(drawNm, "noop.js"));
 const { chromium } = require("playwright");
+
+mkdirSync(outDir, { recursive: true });
 
 const svgs = readdirSync(here).filter((f) => f.endsWith(".svg"));
 
@@ -30,8 +33,8 @@ for (const svgName of svgs) {
     omitBackground: false,
     clip: { x: 0, y: 0, width: 1200, height: 630 },
   });
-  writeFileSync(join(here, pngName), buf);
-  console.log(`[hero] ${svgName} -> ${pngName} (${buf.length} bytes)`);
+  writeFileSync(join(outDir, pngName), buf);
+  console.log(`[og] ${svgName} -> public/og/${pngName} (${buf.length} bytes)`);
 }
 
 await browser.close();
