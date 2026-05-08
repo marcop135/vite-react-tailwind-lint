@@ -57,9 +57,7 @@ const isoDate = process.env.CHANGELOG_DATE ?? new Date().toISOString().slice(0, 
 const section = [
   `## [${newVersion}] - ${isoDate}`,
   '',
-  '### Changed',
-  '',
-  '- Automated maintenance patch (scheduled workflow). Tag triggers GitHub Release (generated notes); production deploy follows the branch configured in Netlify (often `master`).',
+  '- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.',
 ].join('\n');
 
 let next = prependChangelogBlock(changelog, section);
