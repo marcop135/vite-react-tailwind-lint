@@ -75,16 +75,3 @@
 ## [1.3.0] - Previous Release
 
 - **Feat:** Initial release with Vite + React + Tailwind scaffolding.
-
-[1.6.4]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.4
-[1.6.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.3
-[1.6.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.2
-[1.6.1]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.1
-[1.6.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.6.0
-[1.5.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.5.0
-[1.4.5]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.5
-[1.4.4]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.4
-[1.4.3]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.3
-[1.4.2]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.2
-[1.4.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.4.0
-[1.3.0]: https://github.com/marcop135/vite-react-tailwind-lint/releases/tag/v1.3.0
