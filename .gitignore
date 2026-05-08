@@ -38,3 +38,9 @@ lerna-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Local Claude Code settings
+.claude/
+
+# One-off rendering helper (uses sibling repo's playwright)
+docs/proposals/render.mjs
