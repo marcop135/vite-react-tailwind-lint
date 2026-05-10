@@ -2,6 +2,11 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.6] - 2026-05-10
+
+- **Fix:** Sync `vitest.config.js` with `vite.config.js` so `setupFiles` is loaded under both runners and `@testing-library/jest-dom` matchers are available.
+- **Fix:** Add `@vitest/coverage-v8` so `npm run test:coverage` runs out of the box; gitignore the generated `coverage/` dir.
+
 ## [1.6.5] - 2026-05-08
 
 - **Style:** Redesign OG hero as three-icon row (Vite, React, Tailwind) over a sky-400 -> 700 gradient that aligns with the deployed `bg-sky-300` light theme; widen `soft` filter region so the Tailwind shadow no longer clips.
