@@ -2,10 +2,15 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.9] - 2026-05-12
+
+- **Docs:** Realign `README.md` style and verbosity to the sibling `vite-vanilla-sass-lint` (intro paragraph + "Use this when…", Quick start with dev-server URL, **bold:** category prefixes in What's included, Configuration table, full Releases paragraph, separate Author and License sections).
+- **Build:** Add `test:ci`, `audit`, `audit:fix` scripts; switch `release:check` to `npm run test:ci`.
+- **Fix:** Silence the `no-console` warning in `src/components/ErrorBoundary.jsx` (dev-only logging is intentional).
+
 ## [1.6.8] - 2026-05-12
 
 - **Docs:** Tighten `README.md` (drop redundant prose, flatten What's included, condense Releases + Configuration).
-- **Build:** Lift `MAX_BULLETS` cap in `scripts/release-notes-from-changelog.mjs` from 6 to 20 so curated bullets aren't truncated with `…`.
 
 ## [1.6.7] - 2026-05-12
 
