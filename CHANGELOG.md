@@ -2,6 +2,17 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.7] - 2026-05-12
+
+- **Docs:** Rewrite `README.md` around purpose-first structure; surface Quick start near the top; replace prose script and config lists with tables; drop decorative emoji feature block, "Now edit these files", "Run manually" snippets, and the docs link dump.
+- **Docs:** Trim `CONTRIBUTING.md`: drop duplicated command blocks and the manual Release Workflow steps now covered by workflows.
+- **Docs:** Add `SECURITY.md`, PR template, and bug/feature issue templates under `.github/`.
+- **Build:** `vite.config.js` now sets `build.sourcemap` to `'hidden'` in production and `true` otherwise so dev and `--mode analyze` builds emit referenced sourcemaps.
+- **Build:** Add `.prettierignore` (`dist/`, `coverage/`, `node_modules/`, `.husky/_`, `package-lock.json`, `CHANGELOG.md`); add `format:check` and `clean` scripts; wire `format:check` into `release:check`.
+- **Fix:** Scope HTMLHint to `index.html` so the lint gate stops scanning generated `coverage/` and `dist/` HTML and failing on Istanbul-output markup.
+- **Docs:** Add JSDoc `@param`/`@returns`/`@throws` to helpers in `scripts/release-notes-from-changelog.mjs` and `scripts/bump-patch-maintenance.mjs`.
+- **Docs:** Add `IMPROVEMENTS.md` tracking open items (accessibility, Lighthouse CI, audit gate, release-notes merge).
+
 ## [1.6.6] - 2026-05-10
 
 - **Fix:** Sync `vitest.config.js` with `vite.config.js` so `setupFiles` is loaded under both runners and `@testing-library/jest-dom` matchers are available.
