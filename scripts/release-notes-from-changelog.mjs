@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-const MAX_BULLETS = 6;
+// Cap kept high so curated bullets aren't silently truncated with `…`. Keep
+// changelog entries terse upstream rather than relying on this clamp.
+const MAX_BULLETS = 20;
 
 /**
  * Slice the lines between the `## [version]` heading and the next `## [` heading.
