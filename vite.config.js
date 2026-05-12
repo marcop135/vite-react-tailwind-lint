@@ -19,6 +19,11 @@ export default defineConfig(({ mode }) => ({
         brotliSize: true,
       }),
   ].filter(Boolean),
+  build: {
+    // Production hides sourcemaps from the bundled JS; dev and analyze builds
+    // emit referenced sourcemaps so DevTools and the visualizer can use them.
+    sourcemap: mode === 'production' ? 'hidden' : true,
+  },
   server: {
     watch: {
       ignored: ['**/.stylelintcache', '**/.eslintcache'],

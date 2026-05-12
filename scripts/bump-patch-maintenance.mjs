@@ -5,6 +5,13 @@ import url from 'url';
 
 const ROOT = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '..');
 
+/**
+ * Increment the patch component of a `Major.Minor.Patch` semver string.
+ *
+ * @param {string} semver - Existing semver (no prerelease or build suffix).
+ * @returns {string} Version with `Patch + 1`.
+ * @throws {Error} When `semver` does not match `Major.Minor.Patch`.
+ */
 function bumpPatch(semver) {
   const m = semver.trim().match(/^(\d+)\.(\d+)\.(\d+)/u);
   if (!m) throw new Error(`Invalid semver patch base: "${semver}"`);
@@ -12,6 +19,14 @@ function bumpPatch(semver) {
   return `${major}.${minor}.${Number.parseInt(patch, 10) + 1}`;
 }
 
+/**
+ * Insert a new `section` block before the first existing `## [` heading,
+ * collapsing surrounding blank lines so spacing stays consistent.
+ *
+ * @param {string} changelogBody - Full CHANGELOG.md contents.
+ * @param {string} section - New section text (without surrounding blank lines).
+ * @returns {string} Updated CHANGELOG.md contents.
+ */
 function prependChangelogBlock(changelogBody, section) {
   const idx = changelogBody.search(/^## \[/mu);
   if (idx === -1) return `${changelogBody.trimEnd()}\n\n${section}\n`;

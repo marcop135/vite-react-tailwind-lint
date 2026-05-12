@@ -1,72 +1,42 @@
-# Contributing to vite-react-tailwind-lint
+# Contributing
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing to this project.
+## Getting started
 
-## Getting Started
+1. Fork and clone the repo.
+2. `npm install`.
+3. Branch for your work: `git checkout -b feature/your-feature`.
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/vite-react-tailwind-lint.git`
-3. Install dependencies: `npm install`
-4. Create a new branch: `git checkout -b feature/your-feature-name`
+See [README.md](./README.md#quick-start) for the Quick start path.
 
-## Development Workflow
+## Prerequisites
 
-### Running the Development Server
+- Node.js v22+ (pinned in `.nvmrc`; `nvm use`).
+- npm (bundled with Node).
 
-```bash
-npm run dev
-```
+## Workflow
 
-### Running Tests
+Before opening a PR, run `npm run release:check`. It runs the same gates as CI: lint, test, build, and `npm audit` at the moderate threshold.
 
-```bash
-npm test              # Run tests once
-npm run test:ui       # Run tests with UI
-npm run test:coverage # Run tests with coverage
-```
+Pre-commit hooks (Husky + lint-staged) run ESLint, Stylelint, and Prettier on staged files. If they fail, fix the reported issues and commit again.
 
-### Linting and Formatting
+## Code style
 
-```bash
-npm run lint      # Check for linting errors
-npm run lint:fix  # Auto-fix linting errors
-npm run format    # Format code with Prettier
-```
+- **JavaScript / JSX:** ES2020+, single quotes, camelCase, JSDoc on non-trivial functions. Rules live in `eslint.config.js`.
+- **CSS:** rules live in `.stylelintrc`. Tailwind utility classes are linted via `prettier-plugin-tailwindcss` and Stylelint defaults.
+- **HTML:** semantic elements, lowercase tags, double-quoted attribute values, alt text on images. Rules live in `.htmlhintrc`.
 
-## Code Style
+## Commit messages
 
-- Follow the existing code style
-- Use ESLint and Prettier configurations provided
-- Write meaningful commit messages
-- Keep components small and focused
-- Use React.memo for performance optimization when appropriate
+Imperative mood, first line under 72 characters, optional body for the why.
 
-## Commit Guidelines
+## Pull requests
 
-- Write clear, descriptive commit messages
-- Use present tense ("Add feature" not "Added feature")
-- Reference issues/PRs when applicable
+The repository has a PR template with the checklist. Issues use the bug and feature templates under `.github/ISSUE_TEMPLATE/`.
 
-## Pull Request Process
+## Releases
 
-1. Ensure all tests pass: `npm test`
-2. Ensure linting passes: `npm run lint`
-3. Update documentation if needed
-4. Submit a pull request with a clear description
+User-facing change history is tracked in [`CHANGELOG.md`](./CHANGELOG.md). Published tags and release notes live in [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases). The release flow is automated through `.github/workflows/release.yml` (tag-triggered) and `.github/workflows/scheduled-patch-release.yml` (biweekly).
 
-## Release Information
+## License
 
-- User-facing change history is tracked in [CHANGELOG.md](./CHANGELOG.md).
-- Published tags and release notes are available in [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases).
-
-### Release Workflow
-
-1. Bump version: `npm version patch --no-git-tag-version`
-2. Update `CHANGELOG.md`
-3. Commit release files to `master`
-4. Create annotated tag: `git tag -a vX.Y.Z -m "X.Y.Z"`
-5. Push branch and tag: `git push origin master && git push origin refs/tags/vX.Y.Z`
-
-## Questions?
-
-Feel free to open an issue for any questions or concerns.
+By contributing you agree that your contributions are licensed under the [MIT License](./LICENSE).
