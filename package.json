@@ -1,7 +1,7 @@
 {
   "name": "vite-react-tailwind-lint",
   "private": true,
-  "version": "1.6.8",
+  "version": "1.6.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,9 +13,12 @@
     "format:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,css,scss,html,md}'",
     "clean": "rm -rf dist coverage",
     "test": "vitest",
+    "test:ci": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "release:check": "npm run lint && npm run format:check && npx vitest run && npm run build && npm audit --audit-level=moderate",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix",
+    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm audit --audit-level=moderate",
     "analyze": "vite build --mode analyze",
     "prepare": "husky"
   },
