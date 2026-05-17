@@ -2,6 +2,10 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.10] - 2026-05-17
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.6.9] - 2026-05-12
 
 - **Docs:** Realign `README.md` style and verbosity to the sibling `vite-vanilla-sass-lint` (intro paragraph + "Use this when…", Quick start with dev-server URL, **bold:** category prefixes in What's included, Configuration table, full Releases paragraph, separate Author and License sections).
