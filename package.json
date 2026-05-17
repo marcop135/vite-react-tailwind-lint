@@ -1,7 +1,7 @@
 {
   "name": "vite-react-tailwind-lint",
   "private": true,
-  "version": "1.6.9",
+  "version": "1.6.10",
   "type": "module",
   "scripts": {
     "dev": "vite",
