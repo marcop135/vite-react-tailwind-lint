@@ -2,6 +2,10 @@
 
 **Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
 
+## [1.6.12] - 2026-06-02
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.6.11] - 2026-06-02
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
