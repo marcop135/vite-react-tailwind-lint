@@ -1,14 +1,28 @@
 # Changelog
 
-**Labels:** Build, Chore, CI, Docs, Enhance, Feat, Fix, Perf, Revert, Sec, Style. Suffix `(WIP)` for in-progress.
+**Format:** Based on [Keep a Changelog](https://keepachangelog.com).
+
+**Voice:** Use the imperative, like a commit message. Write add, fix, increase, force, not added, fixed, increased, forced.
+
+**Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
+
+**Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
+
+**Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
+
+## [1.6.13] - 2026-06-03
+
+- **Docs:** Add a Keep a Changelog header documenting Format, Voice, Length, Links, and Label conventions.
+- **Docs:** Rewrite generic maintenance entries (1.6.12, 1.6.11, 1.6.2, 1.4.5) with their shipped changes and PR links.
 
 ## [1.6.12] - 2026-06-02
 
-- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+- **Fix:** Bump `.nvmrc` to Node 22 so Netlify cloud builds match the toolchain; stale 18 broke prod builds ([#66](https://github.com/marcop135/vite-react-tailwind-lint/pull/66)).
 
 ## [1.6.11] - 2026-06-02
 
-- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+- **Fix:** Remove orphaned `tailwind.config.js`; dead under Tailwind v4 CSS-first (`@import`, no `@config`) ([#64](https://github.com/marcop135/vite-react-tailwind-lint/pull/64)).
+- **Sec:** Bump `brace-expansion` via `npm audit fix` to clear [GHSA-jxxr-4gwj-5jf2](https://github.com/advisories/GHSA-jxxr-4gwj-5jf2); audit now clean ([#64](https://github.com/marcop135/vite-react-tailwind-lint/pull/64)).
 
 ## [1.6.10] - 2026-05-17
 
@@ -61,7 +75,7 @@
 
 ## [1.6.2] - 2026-05-08
 
-- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers GitHub Release.
+- **CI:** Adopt the PR-based release workflow ported from the vanilla repo: auto-merge patch bumps, tag-triggered Release ([#39](https://github.com/marcop135/vite-react-tailwind-lint/pull/39)).
 
 ## [1.6.1] - 2026-05-02
 
@@ -84,7 +98,8 @@
 
 ## [1.4.5] - 2026-04-28
 
-- **Chore:** Maintenance tag, no code change.
+- **Sec:** Add Netlify security headers (CSP, HSTS, X-Frame-Options, etc.); guard `ErrorBoundary` logging behind DEV ([#10](https://github.com/marcop135/vite-react-tailwind-lint/pull/10)).
+- **Chore:** Tighten `no-console`, `no-debugger`, `no-empty` ESLint rules from off to warn ([#10](https://github.com/marcop135/vite-react-tailwind-lint/pull/10)).
 
 ## [1.4.4] - 2026-04-17
 
