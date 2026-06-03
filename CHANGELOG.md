@@ -10,6 +10,11 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.6.13] - 2026-06-03
+
+- **Docs:** Add a Keep a Changelog header documenting Format, Voice, Length, Links, and Label conventions.
+- **Docs:** Rewrite generic maintenance entries (1.6.12, 1.6.11, 1.6.2, 1.4.5) with their shipped changes and PR links.
+
 ## [1.6.12] - 2026-06-02
 
 - **Fix:** Bump `.nvmrc` to Node 22 so Netlify cloud builds match the toolchain; stale 18 broke prod builds ([#66](https://github.com/marcop135/vite-react-tailwind-lint/pull/66)).
