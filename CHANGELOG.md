@@ -10,6 +10,10 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.6.14] - 2026-06-03
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.6.13] - 2026-06-03
 
 - **Docs:** Add a Keep a Changelog header documenting Format, Voice, Length, Links, and Label conventions.
