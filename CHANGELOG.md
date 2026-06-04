@@ -10,6 +10,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.0] - 2026-06-04
+
+- **Perf:** Split deps into a long-lived `vendor` chunk so app deploys keep the React cache warm; app chunk ~187kB to ~6kB ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Perf:** Drop `console`/`debugger` in production via `esbuild.drop`; the DEV-guarded `ErrorBoundary` log is unaffected ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Enhance:** Add skip-to-main link, named landmarks, `focus-visible` rings, button `type`, AA hover shades, reduced-motion reset ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Feat:** Add SEO meta + `SoftwareApplication` JSON-LD, `public/robots.txt`, and `public/sitemap.xml` ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Chore:** Drop unused `React` import in `App.jsx`; add `CLAUDE.md`; ignore throwaway `.audit/` artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+
 ## [1.6.13] - 2026-06-03
 
 - **Docs:** Add a Keep a Changelog header documenting Format, Voice, Length, Links, and Label conventions.
