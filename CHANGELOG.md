@@ -10,6 +10,13 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.0] - 2026-06-04
+
+- **Perf:** Split deps into a long-lived `vendor` chunk and drop `console`/`debugger` in production builds ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Enhance:** Add skip-to-main link, named landmarks, `focus-visible` rings, AA hover contrast, reduced-motion reset ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Feat:** Add canonical/robots/OG meta + `SoftwareApplication` JSON-LD, `public/robots.txt`, and `public/sitemap.xml` ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- **Chore:** Drop unused `React` import in `App.jsx`; add `CLAUDE.md`; ignore throwaway `.audit/` artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+
 ## [1.6.14] - 2026-06-03
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.

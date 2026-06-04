@@ -29,8 +29,9 @@ class ErrorBoundary extends React.Component {
               An error occurred while rendering this page.
             </p>
             <button
+              type='button'
               onClick={() => window.location.reload()}
-              className='rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700'
+              className='rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2'
             >
               Reload Page
             </button>

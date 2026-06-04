@@ -8,7 +8,7 @@ function Footer() {
         This project uses the{' '}
         <a
           href='https://github.com/marcop135/vite-react-tailwind-lint'
-          className='underline hover:text-blue-500'
+          className='underline hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 dark:hover:text-blue-400'
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Visit vite-react-tailwind-lint on GitHub'
