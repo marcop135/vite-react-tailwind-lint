@@ -2,13 +2,16 @@ import React from 'react';
 
 function Navigation() {
   return (
-    <nav className='mb-4 flex items-center justify-between rounded-lg bg-white p-4 shadow dark:bg-gray-900'>
+    <nav
+      aria-label='Primary'
+      className='mb-4 flex items-center justify-between rounded-lg bg-white p-4 shadow dark:bg-gray-900'
+    >
       <span className='font-semibold'>Brand</span>
       <ul className='flex gap-4' role='list'>
         <li>
           <a
             href='#dashboard'
-            className='cursor-pointer hover:underline'
+            className='cursor-pointer hover:underline focus-visible:outline-2 focus-visible:outline-offset-2'
             aria-label='Navigate to Dashboard'
           >
             Dashboard
@@ -17,7 +20,7 @@ function Navigation() {
         <li>
           <a
             href='#info'
-            className='cursor-pointer hover:underline'
+            className='cursor-pointer hover:underline focus-visible:outline-2 focus-visible:outline-offset-2'
             aria-label='Navigate to Info'
           >
             Info
@@ -26,7 +29,7 @@ function Navigation() {
         <li>
           <a
             href='#actions'
-            className='cursor-pointer hover:underline'
+            className='cursor-pointer hover:underline focus-visible:outline-2 focus-visible:outline-offset-2'
             aria-label='Navigate to Actions'
           >
             Actions
