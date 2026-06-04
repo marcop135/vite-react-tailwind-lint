@@ -45,3 +45,6 @@ lerna-debug.log*
 
 # One-off rendering helper (uses sibling repo's playwright)
 docs/proposals/render.mjs
+
+# Local audit screenshots (throwaway)
+.audit/

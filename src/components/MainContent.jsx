@@ -5,7 +5,11 @@ const ContentArea = lazy(() => import('./ContentArea'));
 
 function MainContent() {
   return (
-    <main className='flex flex-col gap-4 md:flex-row'>
+    <main
+      id='main-content'
+      tabIndex={-1}
+      className='flex flex-col gap-4 focus-visible:outline-2 focus-visible:outline-offset-2 md:flex-row'
+    >
       <Suspense
         fallback={
           <div className='min-h-lvh rounded-lg bg-gray-100 p-4 shadow md:w-1/4 dark:bg-gray-900 dark:text-gray-100'>

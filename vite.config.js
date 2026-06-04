@@ -23,6 +23,22 @@ export default defineConfig(({ mode }) => ({
     // Production hides sourcemaps from the bundled JS; dev and analyze builds
     // emit referenced sourcemaps so DevTools and the visualizer can use them.
     sourcemap: mode === 'production' ? 'hidden' : true,
+    rollupOptions: {
+      output: {
+        // Split all node_modules into a long-lived vendor chunk so app-code
+        // changes do not bust the (large, stable) React/ReactDOM cache.
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
+  esbuild: {
+    // Strip console/debugger only in production; dev-guarded console.error in
+    // ErrorBoundary is removed at build time anyway via import.meta.env.DEV.
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
   server: {
     watch: {

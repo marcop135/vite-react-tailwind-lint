@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vite-react-tailwind-lint.netlify.app/sitemap.xml
