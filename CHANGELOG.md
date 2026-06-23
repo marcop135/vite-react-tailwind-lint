@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.1] - 2026-06-23
+
+- **Sec:** Bump `vite` to 7.3.5, `undici` to 7.28.0, and `js-yaml` via `npm audit fix`; audit now clean at moderate.
+- **Build:** Bump `tailwindcss` and `@tailwindcss/vite` to 4.3.1; `vitest` and `@vitest/coverage-v8` to 4.1.9.
+- **Build:** Bump `@types/react` to 19.2.17 and `eslint-plugin-react-refresh` to 0.5.3.
+
 ## [1.7.0] - 2026-06-04
 
 - **Perf:** Split deps into a long-lived `vendor` chunk and drop `console`/`debugger` in production builds ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
