@@ -10,6 +10,10 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.2] - 2026-07-03
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.7.1] - 2026-06-23
 
 - **Sec:** Bump `vite` to 7.3.5, `undici` to 7.28.0, and `js-yaml` via `npm audit fix`; audit now clean at moderate.
