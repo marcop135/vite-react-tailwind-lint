@@ -10,6 +10,10 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.3] - 2026-07-17
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.7.2] - 2026-07-03
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
