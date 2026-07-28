@@ -10,6 +10,11 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.4] - 2026-07-28
+
+- **Sec:** Bump `postcss` to 8.5.24, `esbuild` to 0.28.1, and transitive `fast-uri`/`js-yaml` via `npm audit fix`; add npm overrides for `brace-expansion`/`minimatch`; audit now clean at moderate ([#133](https://github.com/marcop135/vite-react-tailwind-lint/pull/133)).
+- **Build:** Bump `react` and `react-dom` to 19.2.8, `stylelint` to 17.14.1, and `vite` to 7.3.6 ([#133](https://github.com/marcop135/vite-react-tailwind-lint/pull/133)).
+
 ## [1.7.3] - 2026-07-17
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
