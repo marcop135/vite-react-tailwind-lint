@@ -43,7 +43,7 @@
     "globals": "^15.11.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
-    "jsdom": "^28.0.0",
+    "jsdom": "^30.0.1",
     "lint-staged": "^16.2.7",
     "postcss": "^8.5.24",
     "prettier": "^3.9.6",
