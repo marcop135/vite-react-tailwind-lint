@@ -10,6 +10,15 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.6] - 2026-08-18
+
+- **CI:** Scope the `release:check` audit gate to production deps; keep full-tree `npm audit` as a non-blocking step.
+- **Sec:** Clear five high advisories via `npm audit fix`: `brace-expansion`, `fast-uri`, `js-yaml`, `nanoid`, `undici`.
+- **Build:** Add an `audit:prod` script and drop the `brace-expansion`/`minimatch` overrides pinned at vulnerable versions.
+- **CI:** Open scheduled `npm update` PRs with `RELEASE_PAT` so `ci.yml` fires and the required check can report.
+- **Fix:** Merge `develop` into `main` in the release sync step so a diverged `main` cannot wedge the release job.
+- **Docs:** Fill in `AGENTS.md` and document the audit gate and release flow in `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`.
+
 ## [1.7.5] - 2026-08-03
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
