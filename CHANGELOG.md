@@ -10,6 +10,15 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.8] - 2026-08-18
+
+- **Fix:** Move `react` and `react-dom` to `dependencies`; as dev deps they left the `audit:prod` gate scanning nothing.
+- **Chore:** Drop the unused `autoprefixer`, `postcss`, and `esbuild` dev deps; no PostCSS config, and Vite ships it.
+- **Chore:** Swap `stylelint-config-standard-scss` for `stylelint-config-standard`; the project has no Sass files.
+- **Chore:** Untrack `dist/vite.svg` and delete `.browserslistrc`, whose only consumer was Autoprefixer.
+- **Chore:** Delete `docs/og/render.mjs` and `docs/og/favicons.mjs`; both load Playwright from an unrelated repo.
+- **Chore:** Remove the dead `test` block from `vite.config.js`; `vitest.config.js` takes precedence for Vitest runs.
+
 ## [1.7.7] - 2026-08-18
 
 - **Fix:** Run `npm ci` before `npm update` in the scheduled workflow; updating a bare checkout crashed npm's arborist.

@@ -21,8 +21,8 @@ Dev server runs on `http://localhost:5173`.
 
 ## What's included
 
-- **Build:** Vite, [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react), [Tailwind CSS v4](https://tailwindcss.com/) via [`@tailwindcss/vite`](https://tailwindcss.com/docs/installation/using-vite), Autoprefixer
-- **Quality:** [ESLint](https://eslint.org/) (with `eslint-plugin-react`, `react-hooks`, `react-refresh`), [Stylelint](https://stylelint.io/) + `stylelint-config-standard-scss`, [HTMLHint](https://htmlhint.com/), [Prettier](https://prettier.io/) + `prettier-plugin-tailwindcss`
+- **Build:** Vite, [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react), [Tailwind CSS v4](https://tailwindcss.com/) via [`@tailwindcss/vite`](https://tailwindcss.com/docs/installation/using-vite)
+- **Quality:** [ESLint](https://eslint.org/) (with `eslint-plugin-react`, `react-hooks`, `react-refresh`), [Stylelint](https://stylelint.io/) + `stylelint-config-standard`, [HTMLHint](https://htmlhint.com/), [Prettier](https://prettier.io/) + `prettier-plugin-tailwindcss`
 - **Tests:** [Vitest](https://vitest.dev/) with UI + coverage modes, `jsdom` environment, [Testing Library](https://testing-library.com/) for React
 - **Vite plugins:** [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/), [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/), [`rollup-plugin-visualizer`](https://github.com/btd/rollup-plugin-visualizer) (analyze)
 - **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases, biweekly patch releases, Dependabot auto-merge for patch/minor
@@ -73,9 +73,7 @@ vite.config.js  build + test config + bundle analyzer toggle
 | `.stylelintrc` + `.stylelintignore` | Stylelint                             |
 | `.htmlhintrc`                       | HTMLHint                              |
 | `prettier.config.mjs`               | Prettier + Tailwind plugin            |
-| `postcss.config.js`                 | PostCSS (Autoprefixer)                |
 | `vitest.config.js`                  | Vitest                                |
-| `.browserslistrc`                   | Targets for Autoprefixer              |
 | `.editorconfig` + `.nvmrc`          | Editor + Node version pinning         |
 | `.lintstagedrc.js`                  | lint-staged pre-commit config         |
 
