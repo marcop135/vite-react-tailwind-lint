@@ -10,6 +10,11 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.7.7] - 2026-08-18
+
+- **Fix:** Run `npm ci` before `npm update` in the scheduled workflow; updating a bare checkout crashed npm's arborist.
+- **Build:** Bump `@types/react` 19.2.18 ([#147](https://github.com/marcop135/vite-react-tailwind-lint/pull/147)), `postcss` 8.5.26 ([#154](https://github.com/marcop135/vite-react-tailwind-lint/pull/154)), `eslint-plugin-react-refresh` 0.5.4 ([#155](https://github.com/marcop135/vite-react-tailwind-lint/pull/155)).
+
 ## [1.7.6] - 2026-08-18
 
 - **CI:** Scope the `release:check` audit gate to production deps; keep full-tree `npm audit` as a non-blocking step.
