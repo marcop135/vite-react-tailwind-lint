@@ -32,7 +32,13 @@ jobs:
         env:
           HUSKY: 0
 
-      - name: Release check (lint, test, build, audit)
+      # release:check gates on production dependencies only. Dev-tool advisories are
+      # surfaced by the next step but must not be able to freeze releases when no fix
+      # is published yet.
+      - name: Release check (lint, test, build, prod audit)
         run: npm run release:check
         env:
           HUSKY: 0
+
+      - name: Audit full tree (advisory, non-blocking)
+        run: npm audit --audit-level=moderate || true

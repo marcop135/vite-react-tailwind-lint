@@ -15,7 +15,8 @@ Guidance for working in this repository.
 - `npm run format` / `npm run format:check` — Prettier (class ordering via `prettier-plugin-tailwindcss`).
 - `npm run test` / `npm run test:ci` — Vitest (jsdom).
 - `npm run analyze` — build with `rollup-plugin-visualizer`, writes `dist/stats.html`.
-- `npm run release:check` — lint + format check + tests + build + `npm audit`.
+- `npm run release:check`: lint + format check + tests + build + `npm run audit:prod`.
+- `npm run audit:prod`: `npm audit --omit=dev --audit-level=moderate`, the only audit that gates CI. Full-tree `npm audit` runs in CI as a non-blocking advisory step.
 
 ## Architecture
 

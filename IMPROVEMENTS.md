@@ -10,7 +10,7 @@ Open items only. Shipped items are recorded in `CHANGELOG.md`.
 
 ## Build / Config
 
-- **Audit gate**: `release:check` runs `npm audit --audit-level=moderate`. Tightening to `--audit-level=high` would fail loudly on high/critical without churning on moderate noise.
+- **Dev-advisory triage**: `release:check` now gates on production deps only, with a non-blocking full-tree audit in CI. Consider failing the advisory step when a dev advisory is high/critical *and* a fixed version exists, so genuinely actionable ones are not ignored.
 - **Sourcemap inspection in `analyze` mode**: visualizer already uses the build output; confirm that `--mode analyze` sourcemaps surface original source paths in the treemap.
 
 ## Release
