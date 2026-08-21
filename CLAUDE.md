@@ -21,10 +21,14 @@ Guidance for working in this repository.
 ## Architecture
 
 - Entry: `index.html` mounts `#app`; `src/main.jsx` renders `<App>` (no `StrictMode` wrapper).
-- `src/App.jsx` composes `ErrorBoundary > Header > Navigation > WelcomeSection > MainContent > Footer`.
-- `src/components/MainContent.jsx` lazy-loads `Sidebar` and `ContentArea` via `React.lazy` + `Suspense`.
-- Styling is Tailwind utility classes inline in JSX. `src/style.css` is just `@import 'tailwindcss';` plus a `prefers-reduced-motion` reset.
-- Dark mode is driven by `prefers-color-scheme` (Tailwind `dark:` variants); there is no manual toggle.
+- `src/App.jsx` composes `ErrorBoundary > Header > Hero > MainContent > Footer`.
+- `src/components/MainContent.jsx` lazy-loads `FeatureGrid` and `ScriptsTable` via `React.lazy` + `Suspense`.
+- The page is the starter's own pitch, kept deliberately short: `Hero` carries the `npx degit` command and the copy button (the only stateful component), `FeatureGrid` renders `#stack` as three cards, `ScriptsTable` renders `#scripts` as five rows. There is no in-page nav.
+- The copy button degrades in three steps: Clipboard API, then `execCommand` over a selection, then leaving the command selected with a `press Ctrl+C` hint. Outcome is announced in a `role="status"` line whose height is reserved so it cannot shift the layout. All three paths are covered in `src/App.test.jsx`. Page copy is derived from `README.md`; keep the two in sync, and keep additions out unless they earn their space.
+- The page carries no library version numbers: `package.json` is the single source of truth, so a dep bump can never make the page stale. The one version claim is `Node 22+`, a real compatibility floor that matches `.nvmrc`.
+- Styling is Tailwind utility classes inline in JSX. `src/style.css` adds only a `prefers-reduced-motion` reset and two `@utility` definitions for the treatments repeated across components: `surface` (white/`slate-900` card with its border and shadow) and `text-link`. Add a utility only when a treatment appears in three or more places.
+- Shared strings (repo, license, author URLs, the `npx degit` command) live in `src/constants.js`. Import them instead of retyping a URL.
+- The look is taken from `public/og/hero.png`: a `sky-600 → sky-800` vertical gradient, white type, white content cards with `sky-700` accents. Content is capped at `max-w-[1000px]`. Dark mode follows `prefers-color-scheme` with no toggle: the same hue taken down to `sky-950 → slate-950`, cards on `slate-900` with `sky-400` accents, and the copy button on `sky-400` with `slate-950` text rather than white, which glared against the navy. Every white surface carries a `sky-300` border (`sky-900` in dark, kept subtle against the navy) so its edge reads against the gradient. Keep white body copy off anything lighter than `sky-600`, which is where it stops meeting AA.
 - JSX uses the automatic runtime (`@vitejs/plugin-react`); `react/react-in-jsx-scope` is off, so do not add `import React` solely to render JSX. Components that use `React.memo` / `React.lazy` / `React.Component` still import React.
 
 ## Conventions
@@ -42,9 +46,9 @@ Guidance for working in this repository.
 ## Accessibility
 
 - A "Skip to main content" link is the first focusable element (`Header.jsx`), targeting `#main-content` on `<main>` (`MainContent.jsx`, `tabIndex={-1}`).
-- Landmarks have accessible names: `<nav aria-label="Primary">`, `<aside aria-label="Sidebar">`, headingless `<section aria-label="Content">`.
+- Landmarks have accessible names: `<nav aria-label="Primary">`; content sections are named by their own headings via `aria-labelledby`.
 - Interactive elements expose `focus-visible` outlines; buttons declare `type="button"`.
-- Hover colors use the darker `*-700` shades for AA contrast over the light theme. `prefers-reduced-motion` neutralizes transitions in `src/style.css`.
+- White text sits on `sky-600` or darker; card copy is `slate-800` on white, `slate-100` on `slate-900`. `prefers-reduced-motion` neutralizes transitions in `src/style.css`.
 
 ## SEO
 
