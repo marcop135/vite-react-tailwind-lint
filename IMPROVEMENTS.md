@@ -6,11 +6,11 @@ Open items only. Shipped items are recorded in `CHANGELOG.md`.
 
 - **Accessibility linting**: add `eslint-plugin-jsx-a11y` (React-aware, lint-time) and/or `@axe-core/cli` against `npm run preview` in CI.
 - **Lighthouse CI**: automated performance + accessibility budgets on PRs (`@lhci/cli` + `lighthouserc.json` + a workflow running against `dist/` after build).
-- **React Testing setup**: only one example test (`App.test.jsx`); add coverage for the Error Boundary path and a lazy-loaded route.
+- **React Testing setup**: `App.test.jsx` covers the page and both copy paths; the `ErrorBoundary` fallback is still untested.
 
 ## Build / Config
 
-- **Dev-advisory triage**: `release:check` now gates on production deps only, with a non-blocking full-tree audit in CI. Consider failing the advisory step when a dev advisory is high/critical *and* a fixed version exists, so genuinely actionable ones are not ignored.
+- **Dev-advisory triage**: `release:check` now gates on production deps only, with a non-blocking full-tree audit in CI. Consider failing the advisory step when a dev advisory is high/critical _and_ a fixed version exists, so genuinely actionable ones are not ignored.
 - **Sourcemap inspection in `analyze` mode**: visualizer already uses the build output; confirm that `--mode analyze` sourcemaps surface original source paths in the treemap.
 
 ## Release

@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { AUTHOR_URL, LICENSE_URL, REPO_URL } from '../constants';
+
+const LINKS = [
+  { href: REPO_URL, label: 'GitHub' },
+  { href: LICENSE_URL, label: 'MIT' },
+  { href: AUTHOR_URL, label: 'Marco Pontili' },
+];
 
 function Footer() {
   return (
-    <footer className='mt-6 text-center dark:text-white'>
-      <div className='text-base font-semibold'>App Interface</div>
-      <small className='text-xs'>
-        This project uses the{' '}
-        <a
-          href='https://github.com/marcop135/vite-react-tailwind-lint'
-          className='underline hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 dark:hover:text-blue-400'
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='Visit vite-react-tailwind-lint on GitHub'
-        >
-          vite-react-tailwind-lint
-        </a>
-        .
-      </small>
+    <footer className='mt-12 text-center text-xs'>
+      {LINKS.map(({ href, label }, index) => (
+        <Fragment key={href}>
+          {index > 0 && <span aria-hidden='true'> · </span>}
+          <a
+            href={href}
+            className='text-link'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {label}
+          </a>
+        </Fragment>
+      ))}
     </footer>
   );
 }

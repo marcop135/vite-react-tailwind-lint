@@ -1,32 +1,24 @@
 import React, { lazy, Suspense } from 'react';
 
-const Sidebar = lazy(() => import('./Sidebar'));
-const ContentArea = lazy(() => import('./ContentArea'));
+const FeatureGrid = lazy(() => import('./FeatureGrid'));
+const ScriptsTable = lazy(() => import('./ScriptsTable'));
+
+function Skeleton({ label }) {
+  return <p className='surface p-4'>{label}</p>;
+}
 
 function MainContent() {
   return (
     <main
       id='main-content'
       tabIndex={-1}
-      className='flex flex-col gap-4 focus-visible:outline-2 focus-visible:outline-offset-2 md:flex-row'
+      className='flex flex-col gap-10 focus-visible:outline-2 focus-visible:outline-offset-2'
     >
-      <Suspense
-        fallback={
-          <div className='min-h-lvh rounded-lg bg-gray-100 p-4 shadow md:w-1/4 dark:bg-gray-900 dark:text-gray-100'>
-            Loading...
-          </div>
-        }
-      >
-        <Sidebar />
+      <Suspense fallback={<Skeleton label='Loading the stack...' />}>
+        <FeatureGrid />
       </Suspense>
-      <Suspense
-        fallback={
-          <div className='min-h-lvh rounded-lg bg-white p-4 shadow md:w-3/4 dark:bg-gray-900 dark:text-gray-100'>
-            Loading...
-          </div>
-        }
-      >
-        <ContentArea />
+      <Suspense fallback={<Skeleton label='Loading scripts...' />}>
+        <ScriptsTable />
       </Suspense>
     </main>
   );
