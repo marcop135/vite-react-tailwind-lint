@@ -1,7 +1,7 @@
 {
   "name": "vite-react-tailwind-lint",
   "short_name": "vrt-lint",
-  "description": "A modern, fast starter using Vite, React, and Tailwind CSS. Linted, tested, dual-theme.",
+  "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -16,7 +16,7 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#f1f5f9",
-  "background_color": "#f1f5f9",
+  "theme_color": "#0284c7",
+  "background_color": "#0284c7",
   "display": "standalone"
 }

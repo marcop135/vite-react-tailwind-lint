@@ -10,6 +10,18 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.8.0] - 2026-08-21
+
+- **Feat:** Replace the placeholder app shell with the starter's own pitch: hero, stack cards, and a scripts table.
+- **Feat:** Add a copy button for the `npx degit` command, degrading to `execCommand` and then to select-to-copy.
+- **Enhance:** Take the palette from `public/og/hero.png`: `sky-600` to `sky-800` gradient, white cards, navy dark ramp.
+- **Enhance:** Cap the measure at 1000px; drop the in-page nav and both `min-h-lvh` placeholder panels.
+- **Chore:** Rename the placeholder components to `Hero`, `FeatureGrid`, and `ScriptsTable`; drop `Navigation`.
+- **Chore:** Move the repo, license, author, and scaffold-command strings into `src/constants.js`.
+- **Chore:** Grow `App.test.jsx` to five role-based tests, covering the clipboard path and the selection fallback.
+- **Style:** Define `surface` and `text-link` as `@utility` rules; both treatments repeat across three components.
+- **Docs:** Rewrite the description, `og:title`, manifest, and JSON-LD around what the starter actually ships.
+
 ## [1.7.8] - 2026-08-18
 
 - **Fix:** Move `react` and `react-dom` to `dependencies`; as dev deps they left the `audit:prod` gate scanning nothing.

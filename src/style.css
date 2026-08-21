@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+/* Two repeated treatments, defined once. Everything else stays inline in JSX. */
+@utility surface {
+  @apply rounded-lg border border-sky-300 bg-white text-slate-800 shadow;
+  @apply dark:border-sky-900 dark:bg-slate-900 dark:text-slate-100;
+}
+
+@utility text-link {
+  @apply underline underline-offset-4;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
