@@ -93,7 +93,7 @@ Two days ahead of it, `scheduled-npm-update.yml` opens an in-range `npm update` 
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/en) v22+ (pinned in `.nvmrc`, run `nvm use`)
+- [Node.js](https://nodejs.org/en) v22.22.2+ (the 22 line is pinned in `.nvmrc`, run `nvm use`); Vite 8 sets that floor
 - [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`), only to scaffold
 
 ## Contributing
