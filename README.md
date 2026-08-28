@@ -29,25 +29,25 @@ Dev server runs on `http://localhost:5173`.
 
 ## Scripts
 
-| Command                 | What it does                                                  |
-| ----------------------- | ------------------------------------------------------------- |
-| `npm run dev`           | Start Vite dev server                                         |
-| `npm run build`         | Production build to `dist/`                                   |
-| `npm run preview`       | Serve the production build locally                            |
-| `npm run lint`          | ESLint + Stylelint + HTMLHint                                 |
-| `npm run lint:fix`      | Same, auto-fixing what's fixable                              |
-| `npm run format`        | Prettier write across `src/**`                                |
-| `npm run format:check`  | Prettier check (no writes)                                    |
-| `npm run test`          | Vitest watch                                                  |
-| `npm run test:ci`       | Vitest single run                                             |
-| `npm run test:ui`       | Vitest UI                                                     |
-| `npm run test:coverage` | Vitest coverage report                                        |
-| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`         |
-| `npm run audit`         | `npm audit` across the full tree (dev included)               |
-| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`                 |
-| `npm run audit:fix`     | `npm audit fix`                                               |
-| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod`     |
-| `npm run clean`         | Remove `dist/` and `coverage/`                                |
+| Command                 | What it does                                              |
+| ----------------------- | --------------------------------------------------------- |
+| `npm run dev`           | Start Vite dev server                                     |
+| `npm run build`         | Production build to `dist/`                               |
+| `npm run preview`       | Serve the production build locally                        |
+| `npm run lint`          | ESLint + Stylelint + HTMLHint                             |
+| `npm run lint:fix`      | Same, auto-fixing what's fixable                          |
+| `npm run format`        | Prettier write across `src/**`                            |
+| `npm run format:check`  | Prettier check (no writes)                                |
+| `npm run test`          | Vitest watch                                              |
+| `npm run test:ci`       | Vitest single run                                         |
+| `npm run test:ui`       | Vitest UI                                                 |
+| `npm run test:coverage` | Vitest coverage report                                    |
+| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`     |
+| `npm run audit`         | `npm audit` across the full tree (dev included)           |
+| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`             |
+| `npm run audit:fix`     | `npm audit fix`                                           |
+| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod` |
+| `npm run clean`         | Remove `dist/` and `coverage/`                            |
 
 ## Project layout
 
@@ -91,7 +91,7 @@ A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, t
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/en) v22+ (pinned in `.nvmrc`, run `nvm use`)
+- [Node.js](https://nodejs.org/en) v22.22.2+ (the 22 line is pinned in `.nvmrc`, run `nvm use`); Vite 8 sets that floor
 - [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`), only to scaffold
 
 ## Contributing

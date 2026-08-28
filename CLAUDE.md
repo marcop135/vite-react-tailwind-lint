@@ -4,7 +4,7 @@ Guidance for working in this repository.
 
 ## Project
 
-`vite-react-tailwind-lint` is a single-page React starter template. Stack: Vite 7, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netlify (`https://vite-react-tailwind-lint.netlify.app/`). Node 22 (`.nvmrc`).
+`vite-react-tailwind-lint` is a single-page React starter template. Stack: Vite 8, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netlify (`https://vite-react-tailwind-lint.netlify.app/`). Node 22 (`.nvmrc`); Vite 8 sets the real floor at 22.22.2.
 
 ## Commands
 
@@ -39,8 +39,8 @@ Guidance for working in this repository.
 
 ## Build and performance
 
-- `vite.config.js` splits all `node_modules` into a single long-lived `vendor` chunk via `build.rollupOptions.output.manualChunks`. App code lands in a small `index` chunk so deploys do not bust the React/ReactDOM cache on repeat visits.
-- Production builds strip `console`/`debugger` via `esbuild.drop`. The dev-only `console.error` in `ErrorBoundary` is guarded by `import.meta.env.DEV` and is eliminated before that.
+- `vite.config.js` splits all `node_modules` into a single long-lived `vendor` chunk via `build.rolldownOptions.output.codeSplitting`. App code lands in a small `index` chunk so deploys do not bust the React/ReactDOM cache on repeat visits. Vite 8 deprecates `rollupOptions` and `manualChunks`; do not reintroduce either.
+- Production builds strip `console`/`debugger` via `build.rolldownOptions.output.minify.compress`. Vite 8 runs Rolldown, which ignores the old `esbuild.drop` and warns when it is set. Unlike `esbuild.drop`, the minifier reaches `vendor` too, so React's `reportError` console fallback goes with it. The dev-only `console.error` in `ErrorBoundary` is guarded by `import.meta.env.DEV` and is eliminated before that.
 - Production sourcemaps are `hidden`; dev and `analyze` builds emit referenced sourcemaps.
 
 ## Accessibility
