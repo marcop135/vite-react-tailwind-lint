@@ -39,6 +39,8 @@ The repository has a PR template with the checklist. Issues use the bug and feat
 
 User-facing change history is tracked in [`CHANGELOG.md`](./CHANGELOG.md). Published tags and release notes live in [GitHub Releases](https://github.com/marcop135/vite-react-tailwind-lint/releases). The release flow is automated through `.github/workflows/release.yml` (tag-triggered) and `.github/workflows/scheduled-patch-release.yml` (biweekly).
 
+Dependency upkeep feeds it: `.github/workflows/scheduled-npm-update.yml` opens an in-range `npm update` PR on the 1st and 15th and auto-merges it once CI passes, and `dependabot-auto-merge.yml` does the same for Dependabot patch and minor bumps. Major bumps are reviewed by hand.
+
 ## License
 
 By contributing you agree that your contributions are licensed under the [MIT License](./LICENSE).

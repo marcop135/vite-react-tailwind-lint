@@ -25,29 +25,29 @@ Dev server runs on `http://localhost:5173`.
 - **Quality:** [ESLint](https://eslint.org/) (with `eslint-plugin-react`, `react-hooks`, `react-refresh`), [Stylelint](https://stylelint.io/) + `stylelint-config-standard`, [HTMLHint](https://htmlhint.com/), [Prettier](https://prettier.io/) + `prettier-plugin-tailwindcss`
 - **Tests:** [Vitest](https://vitest.dev/) with UI + coverage modes, `jsdom` environment, [Testing Library](https://testing-library.com/) for React
 - **Vite plugins:** [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/), [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/), [`rollup-plugin-visualizer`](https://github.com/btd/rollup-plugin-visualizer) (analyze)
-- **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases, biweekly patch releases, Dependabot auto-merge for patch/minor
+- **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases, biweekly patch releases, auto-merge for Dependabot patch/minor and the biweekly in-range `npm update`
 
 ## Scripts
 
-| Command                 | What it does                                                  |
-| ----------------------- | ------------------------------------------------------------- |
-| `npm run dev`           | Start Vite dev server                                         |
-| `npm run build`         | Production build to `dist/`                                   |
-| `npm run preview`       | Serve the production build locally                            |
-| `npm run lint`          | ESLint + Stylelint + HTMLHint                                 |
-| `npm run lint:fix`      | Same, auto-fixing what's fixable                              |
-| `npm run format`        | Prettier write across `src/**`                                |
-| `npm run format:check`  | Prettier check (no writes)                                    |
-| `npm run test`          | Vitest watch                                                  |
-| `npm run test:ci`       | Vitest single run                                             |
-| `npm run test:ui`       | Vitest UI                                                     |
-| `npm run test:coverage` | Vitest coverage report                                        |
-| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`         |
-| `npm run audit`         | `npm audit` across the full tree (dev included)               |
-| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`                 |
-| `npm run audit:fix`     | `npm audit fix`                                               |
-| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod`     |
-| `npm run clean`         | Remove `dist/` and `coverage/`                                |
+| Command                 | What it does                                              |
+| ----------------------- | --------------------------------------------------------- |
+| `npm run dev`           | Start Vite dev server                                     |
+| `npm run build`         | Production build to `dist/`                               |
+| `npm run preview`       | Serve the production build locally                        |
+| `npm run lint`          | ESLint + Stylelint + HTMLHint                             |
+| `npm run lint:fix`      | Same, auto-fixing what's fixable                          |
+| `npm run format`        | Prettier write across `src/**`                            |
+| `npm run format:check`  | Prettier check (no writes)                                |
+| `npm run test`          | Vitest watch                                              |
+| `npm run test:ci`       | Vitest single run                                         |
+| `npm run test:ui`       | Vitest UI                                                 |
+| `npm run test:coverage` | Vitest coverage report                                    |
+| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`     |
+| `npm run audit`         | `npm audit` across the full tree (dev included)           |
+| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`             |
+| `npm run audit:fix`     | `npm audit fix`                                           |
+| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod` |
+| `npm run clean`         | Remove `dist/` and `coverage/`                            |
 
 ## Project layout
 
@@ -84,6 +84,8 @@ Production builds set `build.sourcemap: 'hidden'`: maps are produced for crash-r
 Changes land on `develop`, then a release commit (`chore(release): vX.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
 
 A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone (Dependabot security PRs target the default branch) cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
+
+Two days ahead of it, `scheduled-npm-update.yml` opens an in-range `npm update` PR on the 1st and 15th and auto-merges it once CI passes, so the release picks the bumps up unattended. Only major bumps still need a human.
 
 ### Audit gate
 
