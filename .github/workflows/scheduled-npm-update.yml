@@ -44,6 +44,7 @@ jobs:
           HUSKY: 0
 
       - name: Open pull request
+        id: cpr
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
         with:
           # PRs opened with the default GITHUB_TOKEN do not trigger workflows, so ci.yml
@@ -62,3 +63,16 @@ jobs:
             dependencies
             automated
           delete-branch: true
+
+      # Same PAT as the step above, for the same reason: auto-merge waits on the required
+      # lint-and-test (22.x) check, which only fires for a PR opened by a real token. The
+      # step is skipped when `npm update` found nothing and no PR was created.
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+        run: |
+          set -euo pipefail
+          gh pr merge --auto --squash --delete-branch "${PR_URL}" || \
+            echo "auto-merge already enabled or PR already merged, continuing"
