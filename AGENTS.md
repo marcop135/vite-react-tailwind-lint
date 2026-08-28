@@ -6,7 +6,7 @@ Entry point for AI agents in this repository. Expand over time; start here for s
 
 ## Stack
 
-Vite 7 + React 19 + Tailwind CSS v4, linted by ESLint, Stylelint, and HTMLHint; Vitest (jsdom) + Testing Library for tests; Prettier with `prettier-plugin-tailwindcss`; Husky + lint-staged pre-commit. Node 22 (`.nvmrc`). Deployed to Netlify (`netlify.toml` sets the CSP and security headers). See `CLAUDE.md` for component architecture, accessibility, and SEO conventions.
+Vite 8 (Rolldown) + React 19 + Tailwind CSS v4, linted by ESLint, Stylelint, and HTMLHint; Vitest (jsdom) + Testing Library for tests; Prettier with `prettier-plugin-tailwindcss`; Husky + lint-staged pre-commit. Node 22 (`.nvmrc`), floor 22.22.2 since Vite 8. Deployed to Netlify (`netlify.toml` sets the CSP and security headers). See `CLAUDE.md` for component architecture, accessibility, and SEO conventions.
 
 ## Build / test
 

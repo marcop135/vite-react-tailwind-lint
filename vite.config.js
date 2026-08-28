@@ -23,22 +23,30 @@ export default defineConfig(({ mode }) => ({
     // Production hides sourcemaps from the bundled JS; dev and analyze builds
     // emit referenced sourcemaps so DevTools and the visualizer can use them.
     sourcemap: mode === 'production' ? 'hidden' : true,
-    rollupOptions: {
+    rolldownOptions: {
       output: {
+        // Strip console/debugger only in production. Vite 8 runs Rolldown, which
+        // ignores the old `esbuild.drop`; the minifier owns it now. The dev-guarded
+        // console.error in ErrorBoundary is removed by import.meta.env.DEV anyway.
+        minify:
+          mode === 'production'
+            ? {
+                compress: { dropConsole: true, dropDebugger: true },
+                mangle: true,
+                codegen: true,
+              }
+            : false,
         // Split all node_modules into a long-lived vendor chunk so app-code
         // changes do not bust the (large, stable) React/ReactDOM cache.
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        codeSplitting: {
+          groups: [
+            {
+              name: (id) => (id.includes('node_modules') ? 'vendor' : null),
+            },
+          ],
         },
       },
     },
-  },
-  esbuild: {
-    // Strip console/debugger only in production; dev-guarded console.error in
-    // ErrorBoundary is removed at build time anyway via import.meta.env.DEV.
-    drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
   server: {
     watch: {
