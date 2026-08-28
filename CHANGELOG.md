@@ -10,6 +10,17 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.9.0] - 2026-08-28
+
+- **Build:** Migrate to Vite 8 on Rolldown with `@vitejs/plugin-react` 6 ([#168](https://github.com/marcop135/vite-react-tailwind-lint/pull/168)).
+- **Build:** Move the build to `rolldownOptions`; Vite 8 deprecates `rollupOptions` and `output.manualChunks`.
+- **Build:** Strip `console`/`debugger` through `output.minify.compress`; Rolldown ignores `esbuild.drop`.
+- **Build:** Rebuild the `vendor` chunk via `output.codeSplitting.groups`, holding it at 189 kB.
+- **Build:** Bump `jsdom` 30, `jest-dom` 7, `lint-staged` 17, `globals` 17, and `rollup-plugin-visualizer` 7.
+- **Build:** Bump `actions/checkout` 7.0.1, `actions/setup-node` 7.0.0, and `softprops/action-gh-release` 3.0.2.
+- **CI:** Auto-merge the biweekly `npm update` PR, so in-range bumps land unattended ([#167](https://github.com/marcop135/vite-react-tailwind-lint/pull/167)).
+- **Docs:** Record the Vite 8 stack, the Node 22.22.2 floor it sets, and the auto-merged in-range dependency PR.
+
 ## [1.8.0] - 2026-08-21
 
 - **Feat:** Replace the placeholder app shell with the starter's own pitch: hero, stack cards, and a scripts table.
