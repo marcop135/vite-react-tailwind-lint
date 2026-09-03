@@ -10,6 +10,10 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.9.1] - 2026-09-03
+
+- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
+
 ## [1.9.0] - 2026-08-28
 
 - **Build:** Migrate to Vite 8 on Rolldown with `@vitejs/plugin-react` 6 ([#168](https://github.com/marcop135/vite-react-tailwind-lint/pull/168)).
