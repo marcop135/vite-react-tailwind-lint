@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.9.3] - 2026-09-25
+
+- **Docs:** Add a Contributor Covenant 2.1 code of conduct, linked from the README contributing section.
+- **Docs:** Add CI, release, and license badges under the README title.
+- **Chore:** Add `.gitattributes` to normalize line endings to LF and mark binary assets.
+
 ## [1.9.2] - 2026-09-17
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
