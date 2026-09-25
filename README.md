@@ -4,6 +4,10 @@
 
 # Vite + React + Tailwind CSS Starter
 
+[![CI](https://github.com/marcop135/vite-react-tailwind-lint/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/marcop135/vite-react-tailwind-lint/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/marcop135/vite-react-tailwind-lint)](https://github.com/marcop135/vite-react-tailwind-lint/releases)
+[![License: MIT](https://img.shields.io/github/license/marcop135/vite-react-tailwind-lint)](./LICENSE)
+
 A [Vite](https://vitejs.dev/) starter for React + Tailwind CSS with linting, formatting, tests, and a tagged-release pipeline already wired up.
 
 Use this when you want a small React app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, Prettier, Vitest, Testing Library, Husky, and a release workflow yourself.
@@ -98,7 +102,7 @@ Two days ahead of it, `scheduled-npm-update.yml` opens an in-range `npm update` 
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/vite-react-tailwind-lint/issues).
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/vite-react-tailwind-lint/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead, and participation is covered by the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Author
 
