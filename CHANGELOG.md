@@ -10,6 +10,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## Unreleased
+
+- **Enhance:** Redraw the README, OG and social images in Catamaran, Cabin and Roboto Mono on the sky ramp.
+- **Feat:** Add `.github/brand/` with SVG sources and `npm run brand:images` / `brand:images:check`.
+- **Docs:** Point the README hero at `.github/brand/readme.png`; add `og:image:type` to `index.html`.
+- **Chore:** Delete `docs/og/`; the GitHub social preview is now `.github/brand/social.png`.
+- **Build:** Add `playwright` and `sharp` as dev dependencies for the image render.
+
 ## [1.9.3] - 2026-09-25
 
 - **Docs:** Add a Contributor Covenant 2.1 code of conduct, linked from the README contributing section.
