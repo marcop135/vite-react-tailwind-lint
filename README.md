@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/og/hero.png" alt="vite-react-tailwind-lint hero" width="900" />
+  <img src=".github/brand/readme.png" alt="Vite, React and Tailwind CSS logos above the vite-react-tailwind-lint name" width="900" />
 </p>
 
 # Vite + React + Tailwind CSS Starter
@@ -63,7 +63,7 @@ src/
   main.jsx      entry, mounts <App />
   style.css     Tailwind directives
 public/         copied as-is to dist/ (favicons, OG image, site.webmanifest)
-docs/og/        hero source (SVG, render scripts, GitHub social preview PNG)
+.github/brand/  README, OG and social images (SVG sources, render script, fonts)
 scripts/        release helpers (bump-patch-maintenance, release-notes-from-changelog)
 index.html      Vite entry, references src/main.jsx
 vite.config.js  build + test config + bundle analyzer toggle
