@@ -10,7 +10,7 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
-## Unreleased
+## [1.10.0] - 2026-10-01
 
 - **Enhance:** Redraw the README, OG and social images in Catamaran, Cabin and Roboto Mono on the sky ramp.
 - **Feat:** Add `.github/brand/` with SVG sources and `npm run brand:images` / `brand:images:check`.
