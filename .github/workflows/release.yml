@@ -59,6 +59,7 @@ jobs:
           HUSKY: 0
 
       - name: Build concise release notes
+        id: notes
         run: node scripts/release-notes-from-changelog.mjs "${{ steps.resolve.outputs.tag }}" release-body.md
 
       - name: Publish GitHub Release
@@ -66,5 +67,5 @@ jobs:
         with:
           generate_release_notes: false
           tag_name: ${{ steps.resolve.outputs.tag }}
-          name: ${{ steps.resolve.outputs.tag }}
+          name: ${{ steps.notes.outputs.name }}
           body_path: release-body.md
