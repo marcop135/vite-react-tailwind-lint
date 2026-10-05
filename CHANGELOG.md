@@ -5,6 +5,14 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.10.2] - 2026-10-05
+
+### Changed
+
+- Standardize CHANGELOG history on Keep a Changelog Added/Changed/Removed/Fixed sections ([#212](https://github.com/marcop135/vite-react-tailwind-lint/pull/212)).
+- Replace the changelog preamble with Format, Voice, Length, and Links bullets ([#213](https://github.com/marcop135/vite-react-tailwind-lint/pull/213)).
+- Add inline markdown links for PRs, docs, and external references throughout the changelog ([#214](https://github.com/marcop135/vite-react-tailwind-lint/pull/214), [#215](https://github.com/marcop135/vite-react-tailwind-lint/pull/215)).
+
 ## [1.10.1] - 2026-10-03
 
 ### Changed
