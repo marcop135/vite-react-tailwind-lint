@@ -15,17 +15,17 @@
 
 ### Added
 
-- Add `.github/brand/` with SVG sources and `npm run brand:images` / `brand:images:check`.
+- Add [`.github/brand/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/brand/) with SVG sources and `npm run brand:images` / `brand:images:check`.
 
 ### Changed
 
 - Redraw the README, OG and social images in Catamaran, Cabin and Roboto Mono on the sky ramp.
-- Point the README hero at `.github/brand/readme.png`; add `og:image:type` to `index.html`.
+- Point the README hero at [`.github/brand/readme.png`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/brand/readme.png); add `og:image:type` to `index.html`.
 - Add `playwright` and `sharp` as dev dependencies for the image render.
 
 ### Removed
 
-- Delete `docs/og/`; the GitHub social preview is now `.github/brand/social.png`.
+- Delete `docs/og/`; the GitHub social preview is now [`.github/brand/social.png`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/brand/social.png).
 
 ## [1.9.3] - 2026-09-25
 
@@ -111,7 +111,7 @@
 - Scope the `release:check` audit gate to production deps; keep full-tree `npm audit` as a non-blocking step.
 - Add an `audit:prod` script and drop the `brace-expansion`/`minimatch` overrides pinned at vulnerable versions.
 - Open scheduled `npm update` PRs with `RELEASE_PAT` so `ci.yml` fires and the required check can report.
-- Fill in `AGENTS.md` and document the audit gate and release flow in `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`.
+- Fill in [`AGENTS.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/AGENTS.md) and document the audit gate and release flow in [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md), [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md), [`CLAUDE.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CLAUDE.md).
 
 ### Fixed
 
@@ -173,7 +173,7 @@
 
 ### Removed
 
-- Drop unused `React` import in `App.jsx`; add `CLAUDE.md`; ignore throwaway `.audit/` artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- Drop unused `React` import in `App.jsx`; add [`CLAUDE.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CLAUDE.md); ignore throwaway `.audit/` artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
 
 ## [1.6.14] - 2026-06-03
 
@@ -214,7 +214,7 @@
 
 ### Changed
 
-- Realign `README.md` style and verbosity to the sibling `vite-vanilla-sass-lint` (intro paragraph + "Use this when…", Quick start with dev-server URL, **bold:** category prefixes in What's included, Configuration table, full Releases paragraph, separate Author and License sections).
+- Realign [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) style and verbosity to the sibling `vite-vanilla-sass-lint` (intro paragraph + "Use this when…", Quick start with dev-server URL, **bold:** category prefixes in What's included, Configuration table, full Releases paragraph, separate Author and License sections).
 - Add `test:ci`, `audit`, `audit:fix` scripts; switch `release:check` to `npm run test:ci`.
 
 ### Fixed
@@ -225,15 +225,15 @@
 
 ### Changed
 
-- Tighten `README.md` (drop redundant prose, flatten What's included, condense Releases + Configuration).
+- Tighten [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) (drop redundant prose, flatten What's included, condense Releases + Configuration).
 
 ## [1.6.7] - 2026-05-12
 
 ### Changed
 
-- Rewrite `README.md` purpose-first; Quick start near top; scripts and config tables; drop emoji feature block and Run manually snippets.
-- Trim `CONTRIBUTING.md`; drop manual Release Workflow steps covered by workflows.
-- Add `SECURITY.md`, PR template, and bug/feature issue templates.
+- Rewrite [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) purpose-first; Quick start near top; scripts and config tables; drop emoji feature block and Run manually snippets.
+- Trim [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md); drop manual Release Workflow steps covered by workflows.
+- Add [`SECURITY.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/SECURITY.md), PR template, and bug/feature issue templates.
 - `vite.config.js` sets `build.sourcemap: 'hidden'` in production, `true` otherwise.
 - Add `.prettierignore`, `format:check`, `clean`; wire `format:check` into `release:check`.
 - JSDoc on `scripts/*.mjs` helpers; add `IMPROVEMENTS.md`.
@@ -274,12 +274,12 @@
 
 ### Changed
 
-- Rename `readme.md` to `README.md`; add hero image at top.
+- Rename `readme.md` to [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md); add hero image at top.
 
 ### Removed
 
-- Drop stale `RELEASE.md` links from `README.md` and `CONTRIBUTING.md`.
-- Remove `RELEASE.md`; release flow lives in `CHANGELOG.md` + `.github/workflows/`.
+- Drop stale `RELEASE.md` links from [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) and [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md).
+- Remove `RELEASE.md`; release flow lives in `CHANGELOG.md` + [`.github/workflows/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/workflows/).
 
 ## [1.6.2] - 2026-05-08
 
@@ -367,7 +367,7 @@
 ### Changed
 
 - Proper `<a>` tags + ARIA labels in nav.
-- Add `CONTRIBUTING.md` and `CHANGELOG.md`.
+- Add [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md) and `CHANGELOG.md`.
 - ESLint react + hooks plugins, Tailwind config, bundle analyzer.
 - Add `@types/react{,-dom}` for editor TS support.
 - Tighten ESLint (`eqeqeq`, camelcase, strict `no-undef`); ignore `dist/`.
