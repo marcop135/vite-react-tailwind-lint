@@ -33,7 +33,7 @@
 
 - Add a Contributor Covenant 2.1 code of conduct, linked from the README contributing section.
 - Add CI, release, and license badges under the README title.
-- Add `.gitattributes` to normalize line endings to LF and mark binary assets.
+- Add [`.gitattributes`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.gitattributes) to normalize line endings to LF and mark binary assets.
 
 ## [1.9.2] - 2026-09-17
 
@@ -69,10 +69,10 @@
 
 ### Changed
 
-- Take the palette from `public/og/hero.png`: `sky-600` to `sky-800` gradient, white cards, navy dark ramp.
+- Take the palette from [`public/og/hero.png`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/public/og/hero.png): `sky-600` to `sky-800` gradient, white cards, navy dark ramp.
 - Cap the measure at 1000px; drop the in-page nav and both `min-h-lvh` placeholder panels.
 - Rename the placeholder components to `Hero`, `FeatureGrid`, and `ScriptsTable`; drop `Navigation`.
-- Move the repo, license, author, and scaffold-command strings into `src/constants.js`.
+- Move the repo, license, author, and scaffold-command strings into [`src/constants.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/src/constants.js).
 - Grow `App.test.jsx` to five role-based tests, covering the clipboard path and the selection fallback.
 - Define `surface` and `text-link` as `@utility` rules; both treatments repeat across three components.
 - Rewrite the description, `og:title`, manifest, and JSON-LD around what the starter actually ships.
@@ -82,13 +82,13 @@
 ### Changed
 
 - Swap `stylelint-config-standard-scss` for `stylelint-config-standard`; the project has no Sass files.
-- Untrack `dist/vite.svg` and delete `.browserslistrc`, whose only consumer was Autoprefixer.
+- Untrack [`dist/vite.svg`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/dist/vite.svg) and delete `.browserslistrc`, whose only consumer was Autoprefixer.
 
 ### Removed
 
 - Drop the unused `autoprefixer`, `postcss`, and `esbuild` dev deps; no PostCSS config, and Vite ships it.
 - Delete `docs/og/render.mjs` and `docs/og/favicons.mjs`; both load Playwright from an unrelated repo.
-- Remove the dead `test` block from `vite.config.js`; `vitest.config.js` takes precedence for Vitest runs.
+- Remove the dead `test` block from [`vite.config.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/vite.config.js); [`vitest.config.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/vitest.config.js) takes precedence for Vitest runs.
 
 ### Fixed
 
@@ -164,7 +164,7 @@
 
 ### Added
 
-- Add canonical/robots/OG meta + `SoftwareApplication` JSON-LD, `public/robots.txt`, and `public/sitemap.xml` ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- Add canonical/robots/OG meta + `SoftwareApplication` JSON-LD, [`public/robots.txt`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/public/robots.txt), and [`public/sitemap.xml`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/public/sitemap.xml) ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
 
 ### Changed
 
@@ -173,7 +173,7 @@
 
 ### Removed
 
-- Drop unused `React` import in `App.jsx`; add [`CLAUDE.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CLAUDE.md); ignore throwaway `.audit/` artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
+- Drop unused `React` import in `App.jsx`; add [`CLAUDE.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CLAUDE.md); ignore throwaway [`.audit/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.audit/) artifacts ([#70](https://github.com/marcop135/vite-react-tailwind-lint/pull/70)).
 
 ## [1.6.14] - 2026-06-03
 
@@ -192,7 +192,7 @@
 
 ### Fixed
 
-- Bump `.nvmrc` to Node 22 so Netlify cloud builds match the toolchain; stale 18 broke prod builds ([#66](https://github.com/marcop135/vite-react-tailwind-lint/pull/66)).
+- Bump [`.nvmrc`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.nvmrc) to Node 22 so Netlify cloud builds match the toolchain; stale 18 broke prod builds ([#66](https://github.com/marcop135/vite-react-tailwind-lint/pull/66)).
 
 ## [1.6.11] - 2026-06-02
 
@@ -202,7 +202,7 @@
 
 ### Security
 
-- Bump `brace-expansion` via `npm audit fix` to clear [GHSA-jxxr-4gwj-5jf2](https://github.com/advisories/GHSA-jxxr-4gwj-5jf2); audit now clean ([#64](https://github.com/marcop135/vite-react-tailwind-lint/pull/64)).
+- Bump `brace-expansion` via `npm audit fix` to clear [GHSA-jxxr-4gwj-5jf2](https://github.com/advisories/[GHSA-jxxr-4gwj-5jf2](https://github.com/advisories/GHSA-jxxr-4gwj-5jf2)); audit now clean ([#64](https://github.com/marcop135/vite-react-tailwind-lint/pull/64)).
 
 ## [1.6.10] - 2026-05-17
 
@@ -219,7 +219,7 @@
 
 ### Fixed
 
-- Silence the `no-console` warning in `src/components/ErrorBoundary.jsx` (dev-only logging is intentional).
+- Silence the `no-console` warning in [`src/components/ErrorBoundary.jsx`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/src/components/ErrorBoundary.jsx) (dev-only logging is intentional).
 
 ## [1.6.8] - 2026-05-12
 
@@ -234,9 +234,9 @@
 - Rewrite [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) purpose-first; Quick start near top; scripts and config tables; drop emoji feature block and Run manually snippets.
 - Trim [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md); drop manual Release Workflow steps covered by workflows.
 - Add [`SECURITY.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/SECURITY.md), PR template, and bug/feature issue templates.
-- `vite.config.js` sets `build.sourcemap: 'hidden'` in production, `true` otherwise.
+- [`vite.config.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/vite.config.js) sets `build.sourcemap: 'hidden'` in production, `true` otherwise.
 - Add `.prettierignore`, `format:check`, `clean`; wire `format:check` into `release:check`.
-- JSDoc on `scripts/*.mjs` helpers; add `IMPROVEMENTS.md`.
+- JSDoc on `scripts/*.mjs` helpers; add [`IMPROVEMENTS.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/IMPROVEMENTS.md).
 
 ### Fixed
 
@@ -246,8 +246,8 @@
 
 ### Fixed
 
-- Sync `vitest.config.js` with `vite.config.js` so `setupFiles` is loaded under both runners and `@testing-library/jest-dom` matchers are available.
-- Add `@vitest/coverage-v8` so `npm run test:coverage` runs out of the box; gitignore the generated `coverage/` dir.
+- Sync [`vitest.config.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/vitest.config.js) with [`vite.config.js`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/vite.config.js) so `setupFiles` is loaded under both runners and `@testing-library/jest-dom` matchers are available.
+- Add `@vitest/coverage-v8` so `npm run test:coverage` runs out of the box; gitignore the generated [`coverage/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/coverage/) dir.
 
 ## [1.6.5] - 2026-05-08
 
@@ -261,8 +261,8 @@
 
 ### Added
 
-- Add `public/og/hero.png` (1200x630) + og/twitter meta for share previews.
-- Generate full favicon set (.ico, 96/180/192/512, webmanifest) from `public/vite.svg`; wire `link rel` + dual `theme-color`.
+- Add [`public/og/hero.png`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/public/og/hero.png) (1200x630) + og/twitter meta for share previews.
+- Generate full favicon set (.ico, 96/180/192/512, webmanifest) from [`public/vite.svg`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/public/vite.svg); wire `link rel` + dual `theme-color`.
 - Add `docs/og/hero-github.png` (1280x640) for GitHub Social preview.
 
 ### Changed
@@ -274,12 +274,12 @@
 
 ### Changed
 
-- Rename `readme.md` to [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md); add hero image at top.
+- Rename [`readme.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/readme.md) to [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md); add hero image at top.
 
 ### Removed
 
 - Drop stale `RELEASE.md` links from [`README.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/README.md) and [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md).
-- Remove `RELEASE.md`; release flow lives in `CHANGELOG.md` + [`.github/workflows/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/workflows/).
+- Remove `RELEASE.md`; release flow lives in [`CHANGELOG.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CHANGELOG.md) + [`.github/workflows/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/.github/workflows/).
 
 ## [1.6.2] - 2026-05-08
 
@@ -332,8 +332,8 @@
 
 ### Changed
 
-- Add `netlify.toml` pinning build/publish to stop asset drift.
-- Split `App` out of `src/main.jsx` into `src/App.jsx`.
+- Add [`netlify.toml`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/netlify.toml) pinning build/publish to stop asset drift.
+- Split `App` out of [`src/main.jsx`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/src/main.jsx) into [`src/App.jsx`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/src/App.jsx).
 - Fix Vitest wiring for consistent local + CI runs.
 
 ### Fixed
@@ -354,7 +354,7 @@
 
 ### Changed
 
-- Refresh `package-lock.json`.
+- Refresh [`package-lock.json`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/package-lock.json).
 - Refresh deps (`npm install` + `update`).
 
 ## [1.4.0] - 2026-02-09
@@ -367,10 +367,10 @@
 ### Changed
 
 - Proper `<a>` tags + ARIA labels in nav.
-- Add [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md) and `CHANGELOG.md`.
+- Add [`CONTRIBUTING.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CONTRIBUTING.md) and [`CHANGELOG.md`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/CHANGELOG.md).
 - ESLint react + hooks plugins, Tailwind config, bundle analyzer.
 - Add `@types/react{,-dom}` for editor TS support.
-- Tighten ESLint (`eqeqeq`, camelcase, strict `no-undef`); ignore `dist/`.
+- Tighten ESLint (`eqeqeq`, camelcase, strict `no-undef`); ignore [`dist/`](https://github.com/marcop135/vite-react-tailwind-lint/blob/develop/dist/).
 
 ### Removed
 
