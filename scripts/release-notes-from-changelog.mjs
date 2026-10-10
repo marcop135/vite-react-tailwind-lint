@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
  * Build a concise GitHub Release body from a Keep-a-Changelog section (flat bullets
- * only, no ### headings — suitable for tagged releases).
+ * only, no ### headings — suitable for tagged releases). Also emits the release
+ * title as `[X.Y.Z] - YYYY-MM-DD` from the matching CHANGELOG heading.
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,23 +15,28 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_BULLETS = 20;
 
 /**
- * Slice the lines between the `## [version]` heading and the next `## [` heading.
+ * Find the `## [version] - YYYY-MM-DD` heading and return its date plus the
+ * section lines until the next `## [` heading.
  *
  * @param {string} changelog - Full CHANGELOG.md contents.
  * @param {string} version - Version without the leading `v` (e.g. `1.6.7`).
- * @returns {string[] | null} Section lines, or null if the section is missing or empty.
+ * @returns {{ date: string, body: string[] } | null} Meta and section lines, or null.
  */
-function extractSectionLines(changelog, version) {
+function extractSection(changelog, version) {
   const lines = changelog.split(/\r?\n/);
-  const header = `## [${version}]`;
-  const idx = lines.findIndex((l) => l.startsWith(header));
+  const headerRe = new RegExp(
+    `^## \\[${version.replace(/\./gu, '\\.')}\\] - (\\d{4}-\\d{2}-\\d{2})\\s*$`,
+    'u'
+  );
+  const idx = lines.findIndex((l) => headerRe.test(l));
   if (idx === -1) return null;
+  const date = headerRe.exec(lines[idx])[1];
   const body = [];
   for (let i = idx + 1; i < lines.length; i++) {
     if (/^## \[/.test(lines[i])) break;
     body.push(lines[i]);
   }
-  return body.join('\n').trim().length > 0 ? body : null;
+  return body.join('\n').trim().length > 0 ? { date, body } : null;
 }
 
 /**
@@ -39,7 +45,7 @@ function extractSectionLines(changelog, version) {
  * `### Subheadings` are dropped; sub-bullets fold into the parent with a `·`
  * separator (or a single space when the parent ends with `:`).
  *
- * @param {string[]} sectionLines - Lines from {@link extractSectionLines}.
+ * @param {string[]} sectionLines - Body lines from {@link extractSection}.
  * @returns {string[]} One string per top-level bullet, without the leading `- `.
  */
 function sectionToBullets(sectionLines) {
@@ -87,13 +93,15 @@ if (!versionArg || !outPath) {
 }
 const version = versionArg.replace(/^v/, '');
 const changelog = readFileSync(join(root, 'CHANGELOG.md'), 'utf8');
-const rawLines = extractSectionLines(changelog, version);
-if (!rawLines) {
-  console.error(`No non-empty CHANGELOG section found for [${version}]`);
+const section = extractSection(changelog, version);
+if (!section) {
+  console.error(
+    `No dated CHANGELOG heading "## [${version}] - YYYY-MM-DD" with bullets found`
+  );
   process.exit(1);
 }
 
-let bullets = sectionToBullets(rawLines);
+let bullets = sectionToBullets(section.body);
 if (bullets.length === 0) {
   console.error(`No bullets parsed for [${version}]`);
   process.exit(1);
@@ -104,5 +112,11 @@ if (bullets.length > MAX_BULLETS) {
   bullets.push('…');
 }
 
+const releaseName = `[${version}] - ${section.date}`;
 const body = bullets.map((b) => `- ${b}`).join('\n');
 writeFileSync(outPath, `${body}\n`);
+
+const githubOutput = process.env.GITHUB_OUTPUT;
+if (githubOutput) {
+  appendFileSync(githubOutput, `name=${releaseName}\n`);
+}
