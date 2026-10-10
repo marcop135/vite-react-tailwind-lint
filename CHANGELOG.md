@@ -5,11 +5,16 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
-## [Unreleased]
+## [1.10.3] - 2026-10-10
 
 ### Changed
 
 - Replace the local `audit-optimize` skill with an `## Audit contract` in CLAUDE.md and `scripts/audit-screenshots.mjs`.
+- Bump dev dependencies vite 8.3.2, @vitejs/plugin-react 6.1.2, and globals 17.13.0 ([#225](https://github.com/marcop135/vite-react-tailwind-lint/pull/225), [#221](https://github.com/marcop135/vite-react-tailwind-lint/pull/221), [#220](https://github.com/marcop135/vite-react-tailwind-lint/pull/220)).
+
+### Fixed
+
+- Title GitHub Releases from the CHANGELOG heading ([#218](https://github.com/marcop135/vite-react-tailwind-lint/pull/218)).
 
 ## [1.10.2] - 2026-10-05
 
