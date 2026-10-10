@@ -5,6 +5,12 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Replace the local `audit-optimize` skill with an `## Audit contract` in CLAUDE.md and `scripts/audit-screenshots.mjs`.
+
 ## [1.10.2] - 2026-10-05
 
 ### Changed
