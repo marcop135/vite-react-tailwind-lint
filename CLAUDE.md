@@ -59,6 +59,19 @@ Guidance for working in this repository.
 
 - Netlify builds with `npm run build`, publishes `dist/`, SPA-redirects `/*` to `/index.html`, and sets security headers (CSP, HSTS, X-Frame-Options, etc.) in `netlify.toml`. New inline scripts would violate the CSP `script-src 'self'`.
 
-## Audit workflow
+## Audit contract
 
-The `/audit-optimize` skill (`.claude/skills/audit-optimize/`) runs this repo's full performance/a11y/SEO/code-quality audit: baseline screenshots, parallel fix agents, verification, and before/after visual comparison across breakpoints.
+Read by the user-level `site-audit` skill (performance, a11y, SEO, code quality).
+
+- Server: `npm run build`, then `npm run preview > .audit/preview.log 2>&1 &`. Read the port from the log (4173, or 4174+ when taken); stop the preview by its PID before the next one.
+- Screenshots: `node scripts/audit-screenshots.mjs http://localhost:<port>/ .audit/<label>` writes `<bp>-<theme>.png` for desktop, tablet, mobile in light and dark. `.audit/` is gitignored. At-rest output must be identical; a11y additions show only on focus or hover, so Tab once and capture to see the skip link.
+- Checks: `npm run lint`, `npm run test:ci`, `npm run format:check` (`npm run format` fixes Tailwind class order), `npm run build`.
+
+| Lane                | Owns                                                              | Goals                                                                                                                                                             |
+| ------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Performance / build | `vite.config.js`                                                  | `manualChunks(id)` function for a `vendor` chunk (the object form leaves react-dom internals in the app chunk); `esbuild.drop` console and debugger in production |
+| Accessibility       | `src/components/*.jsx`, `src/style.css`                           | Skip link to `#main-content`, landmark names, `focus-visible`, `type="button"`, AA hover colors, reduced motion                                                   |
+| SEO / metadata      | `index.html`, `public/robots.txt`, `public/sitemap.xml`           | Only missing tags: canonical, robots, OG and Twitter alt text, `SoftwareApplication` JSON-LD                                                                      |
+| Code quality        | `src/App.jsx`, `src/main.jsx`, `eslint.config.js`, `.stylelintrc` | Unused code; conservative config changes                                                                                                                          |
+
+Pitfalls: Netlify CSP is `script-src 'self'`, so no executable inline scripts (JSON-LD is fine). Keep the existing Vite plugins, sourcemap logic, `server.watch`, and `test` config. Components use `React.memo` and `lazy`, so keep their React imports.
