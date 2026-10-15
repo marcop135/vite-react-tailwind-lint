@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/brand/readme.png" alt="Headline React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes" width="900" />
+  <img src=".github/brand/readme.png" alt="Vite logo tile, the name Vite + React + Tailwind and the line React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes" width="900" />
 </p>
 
 # Vite + React + Tailwind CSS Starter
