@@ -21,9 +21,9 @@ function Hero() {
           id='hero-heading'
           className='font-display text-[2.75rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-balance sm:text-6xl lg:text-7xl'
         >
-          Start on the app,{' '}
+          React and Tailwind on Vite, lint and CI{' '}
           <span className='relative whitespace-nowrap'>
-            <span className='relative z-10'>not the config.</span>
+            <span className='relative z-10'>already green.</span>
             <span
               aria-hidden='true'
               className='bg-bolt absolute inset-x-0 bottom-[0.08em] h-[0.22em] -skew-x-12'
@@ -35,11 +35,13 @@ function Hero() {
           HTMLHint, Prettier, Vitest and a tagged-release pipeline wired in and
           passing.
         </p>
-        <div className='mt-8 w-full'>
-          <Quickstart />
-        </div>
       </div>
-      <StackIllustration />
+      <div className='w-full lg:col-span-2 lg:row-start-2'>
+        <Quickstart />
+      </div>
+      <div className='lg:col-start-2 lg:row-start-1'>
+        <StackIllustration />
+      </div>
     </section>
   );
 }

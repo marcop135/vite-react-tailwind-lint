@@ -17,7 +17,9 @@ describe('App', () => {
     render(<App />);
     const headings = screen.getAllByRole('heading', { level: 1 });
     expect(headings).toHaveLength(1);
-    expect(headings[0].textContent).toBe('Start on the app, not the config.');
+    expect(headings[0].textContent).toBe(
+      'React and Tailwind on Vite, lint and CI already green.'
+    );
   });
 
   it('renders every quick start command', () => {

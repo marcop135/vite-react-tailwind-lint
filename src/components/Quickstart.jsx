@@ -23,7 +23,7 @@ function Quickstart() {
   const allRef = useRef(null);
 
   return (
-    <div className='w-full max-w-xl'>
+    <div className='w-full max-w-3xl'>
       <div className='border-term-line bg-term text-term-ink overflow-hidden rounded-lg border shadow-[0_1.5rem_3rem_-1.5rem_rgb(0_0_0/0.45)]'>
         <div className='border-term-line flex items-center justify-between gap-3 border-b px-4 py-2'>
           <span className='flex items-center gap-1.5' aria-hidden='true'>
@@ -53,7 +53,7 @@ function Quickstart() {
                 ref={(node) => {
                   lineRefs.current[index] = node;
                 }}
-                className='min-w-0 flex-1 overflow-x-auto whitespace-pre'
+                className='min-w-0 flex-1 [overflow-wrap:anywhere] whitespace-pre-wrap'
               >
                 {line}
               </code>
