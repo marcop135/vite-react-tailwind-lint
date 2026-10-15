@@ -18,7 +18,7 @@ describe('App', () => {
     const headings = screen.getAllByRole('heading', { level: 1 });
     expect(headings).toHaveLength(1);
     expect(headings[0].textContent).toBe(
-      'Skip the setup: React, Tailwind and Vite, already linted and tested.'
+      'React, Tailwind and Vite, already linted and tested.'
     );
   });
 
