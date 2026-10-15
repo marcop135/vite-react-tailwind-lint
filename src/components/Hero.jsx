@@ -21,14 +21,7 @@ function Hero() {
           id='hero-heading'
           className='font-display text-[2.75rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-balance sm:text-6xl lg:text-7xl'
         >
-          React and Tailwind on Vite, lint and CI{' '}
-          <span className='relative whitespace-nowrap'>
-            <span className='relative z-10'>already green.</span>
-            <span
-              aria-hidden='true'
-              className='bg-bolt absolute inset-x-0 bottom-[0.08em] h-[0.22em] -skew-x-12'
-            />
-          </span>
+          React and Tailwind on Vite, lint and CI already green.
         </h1>
         <p className='text-muted mt-6 max-w-xl text-lg text-pretty'>
           A Vite starter for React and Tailwind CSS with ESLint, Stylelint,
