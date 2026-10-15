@@ -2,50 +2,67 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';
 import App from './App';
-import { SCAFFOLD_COMMAND } from './constants';
+import { QUICKSTART, VERSIONS } from './constants';
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+  window.history.replaceState(null, '', '/');
+});
+
+const [CLONE] = QUICKSTART;
 
 describe('App', () => {
-  it('renders the project name as the page title', () => {
+  it('renders the value line as the only h1', () => {
     render(<App />);
-    expect(
-      screen.getByRole('heading', {
-        level: 1,
-        name: 'vite-react-tailwind-lint',
-      })
-    ).toBeTruthy();
+    const headings = screen.getAllByRole('heading', { level: 1 });
+    expect(headings).toHaveLength(1);
+    expect(headings[0].textContent).toBe('Start on the app, not the config.');
   });
 
-  it('renders the hero pitch and the scaffold command', () => {
+  it('renders every quick start command', () => {
     render(<App />);
-    expect(
-      screen.getByRole('heading', {
-        level: 2,
-        name: 'Vite + React + Tailwind',
-      })
-    ).toBeTruthy();
-    expect(screen.getByText(SCAFFOLD_COMMAND)).toBeTruthy();
+    for (const line of QUICKSTART) {
+      expect(screen.getAllByText(line).length).toBeGreaterThan(0);
+    }
   });
 
-  it('renders the lazy-loaded stack and scripts sections', async () => {
+  it('shows versions resolved from the lockfile', async () => {
     render(<App />);
-    expect(await screen.findByText('Tailwind CSS')).toBeTruthy();
+    expect(VERSIONS.vite).toMatch(/^\d+\.\d+\.\d+/);
+    expect(await screen.findByText('What is wired in')).toBeTruthy();
+    expect(screen.getAllByText(VERSIONS.vite).length).toBeGreaterThan(0);
+  });
+
+  it('renders the lazy-loaded pipeline and scripts sections', async () => {
+    render(<App />);
+    expect(await screen.findByText('From save to release')).toBeTruthy();
     expect(await screen.findByText('npm run release:check')).toBeTruthy();
   });
 
-  it('copies the command and confirms it', async () => {
+  it('copies one command and confirms it', async () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } });
 
     render(<App />);
-    fireEvent.click(screen.getByRole('button', { name: 'Copy' }));
+    fireEvent.click(screen.getByRole('button', { name: `Copy: ${CLONE}` }));
 
     expect(await screen.findByText('Copied to clipboard')).toBeTruthy();
-    expect(writeText).toHaveBeenCalledWith(SCAFFOLD_COMMAND);
-    expect(screen.getByRole('button', { name: 'Copied' })).toBeTruthy();
+    expect(writeText).toHaveBeenCalledWith(CLONE);
+    expect(
+      screen.getByRole('button', { name: `Copied: ${CLONE}` })
+    ).toBeTruthy();
+  });
 
-    vi.unstubAllGlobals();
+  it('copies all commands at once', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } });
+
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: 'Copy all' }));
+
+    expect(await screen.findByText('Copied all')).toBeTruthy();
+    expect(writeText).toHaveBeenCalledWith(QUICKSTART.join('\n'));
   });
 
   it('falls back to selecting the command when the clipboard is blocked', async () => {
@@ -54,12 +71,24 @@ describe('App', () => {
     document.execCommand = execCommand;
 
     render(<App />);
-    fireEvent.click(screen.getByRole('button', { name: 'Copy' }));
+    fireEvent.click(screen.getByRole('button', { name: `Copy: ${CLONE}` }));
 
     expect(await screen.findByText(/press (Ctrl|Cmd)\+C/)).toBeTruthy();
     expect(execCommand).toHaveBeenCalledWith('copy');
-    expect(window.getSelection().toString()).toContain('npx degit');
+    expect(window.getSelection().toString()).toContain('git clone');
+  });
 
-    vi.unstubAllGlobals();
+  it('renders a not-found view off the home route', () => {
+    window.history.replaceState(null, '', '/missing');
+    render(<App />);
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Nothing at this address.',
+      })
+    ).toBeTruthy();
+    expect(document.querySelector('meta[name="robots"]').content).toBe(
+      'noindex'
+    );
   });
 });
