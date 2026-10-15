@@ -5,6 +5,12 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Redirect every Netlify path to [vitereact.marcopontili.com](https://vitereact.marcopontili.com) with a forced 301.
+
 ## [1.10.3] - 2026-10-10
 
 ### Changed
