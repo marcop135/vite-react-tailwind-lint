@@ -15,5 +15,5 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://mt.marcopontili.com; connect-src 'self' https://mt.marcopontili.com; img-src 'self' data: https://mt.marcopontili.com; style-src 'self' 'unsafe-inline'"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
