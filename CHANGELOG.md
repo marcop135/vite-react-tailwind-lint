@@ -5,6 +5,13 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.11.1] - 2026-10-16
+
+### Changed
+
+- Redirect every Netlify path to [vitereact.marcopontili.com](https://vitereact.marcopontili.com) with a forced 301.
+- Bump dev dependencies prettier 3.9.10, playwright 1.64.0, and vite 8.3.4 ([#237](https://github.com/marcop135/vite-react-tailwind-lint/pull/237), [#234](https://github.com/marcop135/vite-react-tailwind-lint/pull/234), [#233](https://github.com/marcop135/vite-react-tailwind-lint/pull/233)).
+
 ## [1.11.0] - 2026-10-16
 
 ### Added
