@@ -6,7 +6,7 @@ Entry point for AI agents in this repository. Expand over time; start here for s
 
 ## Stack
 
-Vite 8 (Rolldown) + React 19 + Tailwind CSS v4, linted by ESLint, Stylelint, and HTMLHint; Vitest (jsdom) + Testing Library for tests; Prettier with `prettier-plugin-tailwindcss`; Husky + lint-staged pre-commit. Node 22 (`.nvmrc`), floor 22.22.2 since Vite 8. Deployed to Netlify (`netlify.toml` sets the CSP and security headers). See `CLAUDE.md` for component architecture, accessibility, and SEO conventions.
+Vite 8 (Rolldown) + React 19 + Tailwind CSS v4, linted by ESLint, Stylelint, and HTMLHint; Vitest (jsdom) + Testing Library for tests; Prettier with `prettier-plugin-tailwindcss`; Husky + lint-staged pre-commit. Node 22 (`.nvmrc`), floor 22.22.2 since Vite 8. Deployed to Netsons at https://vitereact.marcopontili.com by `.github/workflows/deploy.yml` (push to `main`); `public/.htaccess` sets the CSP and security headers. See `CLAUDE.md` for component architecture, accessibility, and SEO conventions.
 
 ## Build / test
 
@@ -37,7 +37,7 @@ Do not re-scope `release:check` to the full tree. A dev-only advisory with no pu
 - Commit secrets (`.env`, credentials).
 - Force-push shared branches unless explicitly requested.
 - Attribute commits or PRs to an agent: no agent co-author trailers, no generated-with footers.
-- Add inline `<script>` to `index.html`; the Netlify CSP is `script-src 'self'`.
+- Add inline `<script>` to `index.html`; the CSP is `script-src 'self' https://mt.marcopontili.com`.
 
 ## Cursor CLI
 

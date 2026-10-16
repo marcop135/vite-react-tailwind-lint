@@ -13,29 +13,41 @@ const SCRIPTS = [
 
 function ScriptsTable() {
   return (
-    <section id='scripts' aria-labelledby='scripts-heading'>
-      <h2
-        id='scripts-heading'
-        className='mb-4 text-xl font-bold tracking-tight'
-      >
-        Scripts
-      </h2>
+    <section
+      id='scripts'
+      aria-labelledby='scripts-heading'
+      className='border-line grid gap-8 border-t py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:py-24'
+    >
+      <div>
+        <h2
+          id='scripts-heading'
+          className='font-display text-4xl leading-none font-extrabold tracking-[-0.02em] sm:text-5xl'
+        >
+          Scripts
+        </h2>
+        <p className='text-muted mt-4 max-w-sm'>
+          The five you will run most. The README lists the rest.
+        </p>
+      </div>
       <div className='surface overflow-x-auto'>
         <table className='w-full text-left text-sm'>
           <caption className='sr-only'>npm scripts in this starter</caption>
+          <thead className='sr-only'>
+            <tr>
+              <th scope='col'>Command</th>
+              <th scope='col'>What it does</th>
+            </tr>
+          </thead>
           <tbody>
             {SCRIPTS.map(({ command, description }) => (
-              <tr
-                key={command}
-                className='border-b border-slate-100 last:border-0 dark:border-slate-800'
-              >
+              <tr key={command} className='border-line border-b last:border-0'>
                 <th
                   scope='row'
-                  className='p-3 font-mono font-normal whitespace-nowrap text-sky-700 dark:text-sky-400'
+                  className='text-vite px-4 py-3 font-mono font-normal whitespace-nowrap'
                 >
                   {command}
                 </th>
-                <td className='p-3'>{description}</td>
+                <td className='text-muted px-4 py-3'>{description}</td>
               </tr>
             ))}
           </tbody>

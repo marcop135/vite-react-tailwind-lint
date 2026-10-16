@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
 
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
@@ -12,23 +13,25 @@
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
-      content="#0284c7"
+      content="#f6f6f3"
     />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
-      content="#082f49"
+      content="#0b0b0f"
     />
 
+    <title>Vite + React + Tailwind CSS starter with linting wired in</title>
     <meta
       name="description"
       content="A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up."
     />
-    <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://vite-react-tailwind-lint.netlify.app/"
+    <meta name="author" content="Marco Pontili" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large"
     />
+    <link rel="canonical" href="https://vitereact.marcopontili.com/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="vite-react-tailwind-lint" />
@@ -38,20 +41,17 @@
       property="og:description"
       content="A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up."
     />
-    <meta
-      property="og:url"
-      content="https://vite-react-tailwind-lint.netlify.app/"
-    />
+    <meta property="og:url" content="https://vitereact.marcopontili.com/" />
     <meta
       property="og:image"
-      content="https://vite-react-tailwind-lint.netlify.app/og/hero.png"
+      content="https://vitereact.marcopontili.com/og/hero.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
     <meta
       property="og:image:alt"
-      content="Vite + React + Tailwind CSS starter template preview"
+      content="Vite logo tile, the name Vite + React + Tailwind and the line React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -64,31 +64,50 @@
     />
     <meta
       name="twitter:image"
-      content="https://vite-react-tailwind-lint.netlify.app/og/hero.png"
+      content="https://vitereact.marcopontili.com/og/hero.png"
     />
     <meta
       name="twitter:image:alt"
-      content="Vite + React + Tailwind CSS starter template preview"
+      content="Vite logo tile, the name Vite + React + Tailwind and the line React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes"
     />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "vite-react-tailwind-lint",
-        "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
-        "url": "https://vite-react-tailwind-lint.netlify.app/",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://vitereact.marcopontili.com/#website",
+            "url": "https://vitereact.marcopontili.com/",
+            "name": "vite-react-tailwind-lint",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://marcopontili.com/#person" }
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "@id": "https://vitereact.marcopontili.com/#software",
+            "name": "vite-react-tailwind-lint",
+            "description": "A Vite starter for React 19 and Tailwind CSS v4 with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
+            "url": "https://vitereact.marcopontili.com/",
+            "codeRepository": "https://github.com/marcop135/vite-react-tailwind-lint",
+            "programmingLanguage": ["JavaScript", "CSS"],
+            "runtimePlatform": "Node.js 22",
+            "license": "https://opensource.org/licenses/MIT",
+            "image": "https://vitereact.marcopontili.com/og/hero.png",
+            "author": { "@id": "https://marcopontili.com/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://marcopontili.com/#person",
+            "name": "Marco Pontili",
+            "url": "https://marcopontili.com"
+          }
+        ]
       }
     </script>
 
-    <title>Vite + React + Tailwind CSS Starter</title>
+    <!-- Self-hosted, cookieless Matomo. External file so the CSP stays script-src 'self' plus mt. -->
+    <script src="/matomo.js" defer></script>
   </head>
 
   <body>

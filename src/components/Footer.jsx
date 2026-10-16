@@ -1,28 +1,36 @@
-import React, { Fragment } from 'react';
-import { AUTHOR_URL, LICENSE_URL, REPO_URL } from '../constants';
+import React from 'react';
+import { AUTHOR_URL, LICENSE_URL, PRIVACY_URL, REPO_URL } from '../constants';
 
 const LINKS = [
-  { href: REPO_URL, label: 'GitHub' },
-  { href: LICENSE_URL, label: 'MIT' },
-  { href: AUTHOR_URL, label: 'Marco Pontili' },
+  { href: REPO_URL, label: 'Source on GitHub' },
+  { href: LICENSE_URL, label: 'MIT License' },
+  { href: PRIVACY_URL, label: 'Privacy' },
+  { href: '/llms.txt', label: 'llms.txt' },
 ];
 
 function Footer() {
   return (
-    <footer className='mt-12 text-center text-xs'>
-      {LINKS.map(({ href, label }, index) => (
-        <Fragment key={href}>
-          {index > 0 && <span aria-hidden='true'> · </span>}
-          <a
-            href={href}
-            className='text-link'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            {label}
-          </a>
-        </Fragment>
-      ))}
+    <footer className='border-line text-muted flex flex-col gap-4 border-t py-8 text-sm sm:flex-row sm:items-center sm:justify-between'>
+      <p>
+        Built and maintained by{' '}
+        <a href={AUTHOR_URL} className='focus-ring text-link text-ink rounded'>
+          Marco Pontili
+        </a>
+      </p>
+      <nav aria-label='Footer'>
+        <ul className='flex flex-wrap gap-x-5 gap-y-1' role='list'>
+          {LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className='focus-ring text-link inline-flex min-h-11 items-center rounded'
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </footer>
   );
 }
