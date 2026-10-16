@@ -5,7 +5,7 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
-## [Unreleased]
+## [1.11.0] - 2026-10-16
 
 ### Added
 
@@ -21,6 +21,7 @@
 - Redesign the landing page: neutral base, Vite and React accents, light and dark, self-hosted fonts.
 - Add a quick start with per-line copy buttons, a stack list with real versions, and a pipeline flow.
 - Switch the README quick start from `npx degit` to `git clone`.
+- Bump actions/setup-node to 7.1.0 ([#232](https://github.com/marcop135/vite-react-tailwind-lint/pull/232)).
 
 ## [1.10.3] - 2026-10-10
 
