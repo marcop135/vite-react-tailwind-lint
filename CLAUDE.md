@@ -4,7 +4,7 @@ Guidance for working in this repository.
 
 ## Project
 
-`vite-react-tailwind-lint` is a single-page React starter template. Stack: Vite 8, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netlify (`https://vite-react-tailwind-lint.netlify.app/`). Node 22 (`.nvmrc`); Vite 8 sets the real floor at 22.22.2.
+`vite-react-tailwind-lint` is a single-page React starter template. Stack: Vite 8, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netsons at `https://vitereact.marcopontili.com/`; the old Netlify host redirects there. Node 22 (`.nvmrc`); Vite 8 sets the real floor at 22.22.2.
 
 ## Commands
 
@@ -21,14 +21,14 @@ Guidance for working in this repository.
 ## Architecture
 
 - Entry: `index.html` mounts `#app`; `src/main.jsx` renders `<App>` (no `StrictMode` wrapper).
-- `src/App.jsx` composes `ErrorBoundary > Header > Hero > MainContent > Footer`.
-- `src/components/MainContent.jsx` lazy-loads `FeatureGrid` and `ScriptsTable` via `React.lazy` + `Suspense`.
-- The page is the starter's own pitch, kept deliberately short: `Hero` carries the `npx degit` command and the copy button (the only stateful component), `FeatureGrid` renders `#stack` as three cards, `ScriptsTable` renders `#scripts` as five rows. There is no in-page nav.
-- The copy button degrades in three steps: Clipboard API, then `execCommand` over a selection, then leaving the command selected with a `press Ctrl+C` hint. Outcome is announced in a `role="status"` line whose height is reserved so it cannot shift the layout. All three paths are covered in `src/App.test.jsx`. Page copy is derived from `README.md`; keep the two in sync, and keep additions out unless they earn their space.
-- The page carries no library version numbers: `package.json` is the single source of truth, so a dep bump can never make the page stale. The one version claim is `Node 22+`, a real compatibility floor that matches `.nvmrc`.
-- Styling is Tailwind utility classes inline in JSX. `src/style.css` adds only a `prefers-reduced-motion` reset and two `@utility` definitions for the treatments repeated across components: `surface` (white/`slate-900` card with its border and shadow) and `text-link`. Add a utility only when a treatment appears in three or more places.
-- Shared strings (repo, license, author URLs, the `npx degit` command) live in `src/constants.js`. Import them instead of retyping a URL.
-- The look is taken from `public/og/hero.png`: a `sky-600 → sky-800` vertical gradient, white type, white content cards with `sky-700` accents. Content is capped at `max-w-[1000px]`. Dark mode follows `prefers-color-scheme` with no toggle: the same hue taken down to `sky-950 → slate-950`, cards on `slate-900` with `sky-400` accents, and the copy button on `sky-400` with `slate-950` text rather than white, which glared against the navy. Every white surface carries a `sky-300` border (`sky-900` in dark, kept subtle against the navy) so its edge reads against the gradient. Keep white body copy off anything lighter than `sky-600`, which is where it stops meeting AA.
+- `src/App.jsx` composes `ErrorBoundary > Header > MainContent > Footer`; any path other than `/` renders `NotFound` (adds `noindex`).
+- `src/components/MainContent.jsx` renders `Hero` and lazy-loads `Stack`, `Pipeline` and `ScriptsTable` via `React.lazy` + `Suspense`.
+- The page is the starter's own pitch: `Hero` carries the value line, `Quickstart` (the `git clone` / `npm install` / `npm run dev` lines with per-line and copy-all buttons) and `StackIllustration`; `Stack` renders `#stack`, `Pipeline` renders `#pipeline` as a full-bleed dark band, `ScriptsTable` renders `#scripts`. The header nav links to the three anchors.
+- Copying lives in `src/hooks/useCopy.js` and degrades in three steps: Clipboard API, then `execCommand` over a selection, then leaving the command selected with a `press Ctrl+C` hint. Outcome is announced in a `role="status"` line whose height is reserved so it cannot shift the layout. All three paths are covered in `src/App.test.jsx`. Page copy is derived from `README.md`; keep the two in sync, and keep additions out unless they earn their space.
+- Version numbers are never typed into JSX: `scripts/stack-versions.mjs` reads them from `package-lock.json` (and `.nvmrc`), and `vite.config.js` / `vitest.config.js` inject them as `__STACK_VERSIONS__`, exposed as `VERSIONS` in `src/constants.js`. A dependency bump updates the page on the next build.
+- Styling is Tailwind utility classes inline in JSX. `src/style.css` holds the self-hosted fonts (Catamaran display, Cabin body, Roboto Mono; OFL texts in `src/assets/fonts/`), the semantic colour tokens, the `prefers-reduced-motion` reset and four `@utility` definitions: `surface`, `text-link`, `focus-ring`, `iso-plane`.
+- Shared strings (site, repo, license, author and privacy URLs, the quick start lines) live in `src/constants.js`. Import them instead of retyping a URL.
+- The look is a refined neutral base with Vite purple and yellow and React cyan as accents. Tokens are CSS custom properties (`--canvas`, `--surface`, `--ink`, `--muted`, `--line`, `--vite`, `--react`, `--bolt`, `--term*`) mapped into Tailwind with `@theme inline`; dark mode swaps the values under `prefers-color-scheme`, so components need no `dark:` variants for colour. Accent text uses `text-vite` / `text-react`, tuned for AA in both themes; the raw brand hexes are for fills and decoration only.
 - JSX uses the automatic runtime (`@vitejs/plugin-react`); `react/react-in-jsx-scope` is off, so do not add `import React` solely to render JSX. Components that use `React.memo` / `React.lazy` / `React.Component` still import React.
 
 ## Conventions
@@ -48,16 +48,18 @@ Guidance for working in this repository.
 - A "Skip to main content" link is the first focusable element (`Header.jsx`), targeting `#main-content` on `<main>` (`MainContent.jsx`, `tabIndex={-1}`).
 - Landmarks have accessible names: `<nav aria-label="Primary">`; content sections are named by their own headings via `aria-labelledby`.
 - Interactive elements expose `focus-visible` outlines; buttons declare `type="button"`.
-- White text sits on `sky-600` or darker; card copy is `slate-800` on white, `slate-100` on `slate-900`. `prefers-reduced-motion` neutralizes transitions in `src/style.css`.
+- Body copy is `--ink` or `--muted` on `--canvas` / `--surface`, AA in light and dark. `prefers-reduced-motion` neutralizes transitions and smooth scrolling in `src/style.css`.
 
 ## SEO
 
-- `index.html` carries canonical, robots, Open Graph (incl. `og:image:alt`, `og:site_name`, `og:locale`), Twitter Card tags, and a `SoftwareApplication` JSON-LD block. JSON-LD is `application/ld+json` (a data block), so it is unaffected by the Netlify `script-src 'self'` CSP.
-- `public/robots.txt` and `public/sitemap.xml` exist; update `sitemap.xml` `<lastmod>` when content changes meaningfully.
+- `index.html` carries canonical, robots, Open Graph (incl. `og:image:alt`, `og:site_name`, `og:locale`), Twitter Card tags, and a JSON-LD `@graph` (`WebSite`, `SoftwareSourceCode`, `Person`). JSON-LD is a data block, so the CSP does not apply to it.
+- `public/` carries `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `privacy.html` and `404.html` (both styled by `public/static.css`). Update `sitemap.xml` `<lastmod>` when content changes meaningfully.
 
 ## Deployment
 
-- Netlify builds with `npm run build`, publishes `dist/`, SPA-redirects `/*` to `/index.html`, and sets security headers (CSP, HSTS, X-Frame-Options, etc.) in `netlify.toml`. New inline scripts would violate the CSP `script-src 'self'`.
+- `.github/workflows/deploy.yml` builds on push to `main` and mirrors `dist/` to the Netsons FTP root (SFTP with a pinned key, else FTPS), then purges Cloudflare for `vitereact.marcopontili.com`.
+- `public/.htaccess` (copied into `dist/`) forces HTTPS, falls back extensionless paths to `index.html`, serves `404.html` for missing files, sets HSTS, nosniff, frame and referrer headers, and the CSP: `'self'` plus `self-hosted Matomo` for Matomo. New inline scripts would violate `script-src`.
+- Matomo is `public/matomo.js`, an external file loaded from `index.html` and `privacy.html`: cookieless, Do Not Track honoured.
 
 ## Audit contract
 
@@ -74,4 +76,4 @@ Read by the user-level `site-audit` skill (performance, a11y, SEO, code quality)
 | SEO / metadata      | `index.html`, `public/robots.txt`, `public/sitemap.xml`           | Only missing tags: canonical, robots, OG and Twitter alt text, `SoftwareApplication` JSON-LD                                                                      |
 | Code quality        | `src/App.jsx`, `src/main.jsx`, `eslint.config.js`, `.stylelintrc` | Unused code; conservative config changes                                                                                                                          |
 
-Pitfalls: Netlify CSP is `script-src 'self'`, so no executable inline scripts (JSON-LD is fine). Keep the existing Vite plugins, sourcemap logic, `server.watch`, and `test` config. Components use `React.memo` and `lazy`, so keep their React imports.
+Pitfalls: the CSP is `script-src 'self' self-hosted Matomo`, so no executable inline scripts (JSON-LD is fine). Keep the existing Vite plugins, sourcemap logic, `server.watch`, and `test` config. Components use `React.memo` and `lazy`, so keep their React imports.

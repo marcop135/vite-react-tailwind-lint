@@ -1,0 +1,26 @@
+# vite-react-tailwind-lint
+
+> A Vite starter for React and Tailwind CSS with ESLint, Stylelint, HTMLHint, Prettier, Vitest, Husky pre-commit hooks and a tagged-release pipeline already wired up. MIT licensed.
+
+- Site: https://vitereact.marcopontili.com/
+- Repository: https://github.com/marcop135/vite-react-tailwind-lint
+- Author: Marco Pontili, https://marcopontili.com
+
+## When to use it
+
+Use it to start a small single-page React app without configuring linting, formatting, tests and CI by hand. It needs Node.js 22.22.2 or newer.
+
+## Quick start
+
+```bash
+git clone https://github.com/marcop135/vite-react-tailwind-lint.git my-app
+cd my-app && npm install
+npm run dev
+```
+
+## Docs
+
+- [README](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/README.md): stack, scripts, project layout, configuration, release flow
+- [CHANGELOG](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/CHANGELOG.md): release history
+- [CONTRIBUTING](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/CONTRIBUTING.md): workflow and gates
+- [Privacy](https://vitereact.marcopontili.com/privacy.html): cookieless self-hosted Matomo, no cookies
