@@ -5,6 +5,12 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Fixed
+
+- Stop Stylelint from rejecting Tailwind `@apply` rules after the csstools syntax patch update ([#223](https://github.com/marcop135/vite-react-tailwind-lint/pull/223), [#224](https://github.com/marcop135/vite-react-tailwind-lint/pull/224)).
+
 ## [1.11.3] - 2026-10-17
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
