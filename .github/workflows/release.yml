@@ -43,7 +43,7 @@ jobs:
           ref: ${{ steps.resolve.outputs.tag }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: 22.x
           cache: npm
@@ -59,12 +59,13 @@ jobs:
           HUSKY: 0
 
       - name: Build concise release notes
+        id: notes
         run: node scripts/release-notes-from-changelog.mjs "${{ steps.resolve.outputs.tag }}" release-body.md
 
       - name: Publish GitHub Release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
         with:
           generate_release_notes: false
           tag_name: ${{ steps.resolve.outputs.tag }}
-          name: ${{ steps.resolve.outputs.tag }}
+          name: ${{ steps.notes.outputs.name }}
           body_path: release-body.md
