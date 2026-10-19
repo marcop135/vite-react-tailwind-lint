@@ -5,6 +5,21 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [1.11.4] - 2026-10-19
+
+### Changed
+
+- Bump dev dependencies stylelint 17.16.0 and jsdom 30.1.3 ([#224](https://github.com/marcop135/vite-react-tailwind-lint/pull/224), [#223](https://github.com/marcop135/vite-react-tailwind-lint/pull/223)).
+
+### Fixed
+
+- Stop Stylelint from rejecting Tailwind `@apply` rules after the csstools syntax patch update ([#223](https://github.com/marcop135/vite-react-tailwind-lint/pull/223), [#224](https://github.com/marcop135/vite-react-tailwind-lint/pull/224)).
+
+### Security
+
+- Bump fast-uri 3.1.7, js-yaml 4.3.2, and undici 8.11.2 ([#170](https://github.com/marcop135/vite-react-tailwind-lint/pull/170), [#184](https://github.com/marcop135/vite-react-tailwind-lint/pull/184), [#199](https://github.com/marcop135/vite-react-tailwind-lint/pull/199)).
+- Bump brace-expansion 1.1.21 and postcss-selector-parser 7.1.6 ([#202](https://github.com/marcop135/vite-react-tailwind-lint/pull/202), [#228](https://github.com/marcop135/vite-react-tailwind-lint/pull/228)).
+
 ## [1.11.3] - 2026-10-17
 
 - **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.
