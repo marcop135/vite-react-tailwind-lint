@@ -33,6 +33,21 @@
           "variant"
         ]
       }
+    ],
+    "at-rule-prelude-no-invalid": [
+      true,
+      {
+        "ignoreAtRules": [
+          "apply",
+          "custom-variant",
+          "plugin",
+          "reference",
+          "source",
+          "theme",
+          "utility",
+          "variant"
+        ]
+      }
     ]
   }
 }
