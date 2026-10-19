@@ -1,14 +1,125 @@
 @import 'tailwindcss';
 
-/* Two repeated treatments, defined once. Everything else stays inline in JSX. */
+/* Self-hosted under the SIL OFL 1.1 (license texts next to the files). */
+@font-face {
+  font-family: Catamaran;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./assets/fonts/catamaran-v28-latin-800.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/cabin-v35-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/cabin-v35-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/roboto-mono-v31-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/roboto-mono-v31-latin-700.woff2') format('woff2');
+}
+
+/* Semantic tokens. Light is the default; dark swaps the values, not the names,
+   so components never need a dark: variant for colour. */
+:root {
+  color-scheme: light dark;
+
+  --canvas: #f6f6f3;
+  --surface: #fff;
+  --ink: #121216;
+  --muted: #52525c;
+  --line: #dddcd6;
+  --vite: #6d28d9;
+  --react: #0e7490;
+  --bolt: #ffc517;
+  --on-bolt: #121216;
+  --term: #111118;
+  --term-ink: #ececf1;
+  --term-muted: #9a9aa8;
+  --term-line: #2a2a35;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #0b0b0f;
+    --surface: #14141b;
+    --ink: #ededf1;
+    --muted: #a3a3b0;
+    --line: #2a2a33;
+    --vite: #b69cff;
+    --react: #58c4dc;
+    --term: #08080c;
+    --term-line: #2f2f3a;
+  }
+}
+
+@theme inline {
+  --font-sans: Cabin, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Catamaran, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-vite: var(--vite);
+  --color-react: var(--react);
+  --color-bolt: var(--bolt);
+  --color-on-bolt: var(--on-bolt);
+  --color-term: var(--term);
+  --color-term-ink: var(--term-ink);
+  --color-term-muted: var(--term-muted);
+  --color-term-line: var(--term-line);
+}
+
+/* Repeated treatments, defined once. Everything else stays inline in JSX. */
 @utility surface {
-  @apply rounded-lg border border-sky-300 bg-white text-slate-800 shadow;
-  @apply dark:border-sky-900 dark:bg-slate-900 dark:text-slate-100;
+  @apply border-line bg-surface text-ink rounded-md border;
 }
 
 @utility text-link {
-  @apply underline underline-offset-4;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2;
+  @apply underline decoration-1 underline-offset-4 hover:decoration-2;
+}
+
+@utility focus-ring {
+  @apply focus-visible:outline-vite focus-visible:outline-2 focus-visible:outline-offset-2;
+}
+
+/* Isometric plane for the hero stack illustration. */
+@utility iso-plane {
+  transform: rotateX(56deg) rotateZ(-45deg);
+}
+
+html {
+  scroll-padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
