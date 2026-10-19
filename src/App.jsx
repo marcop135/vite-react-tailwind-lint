@@ -1,20 +1,19 @@
 import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
-import Hero from './components/Hero';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import './style.css';
 
+// One route. Anything else the server falls back to index.html for is a miss.
+const isHome = (path) => path === '/' || path === '/index.html';
+
 function App() {
   return (
     <ErrorBoundary>
-      {/* Sky ramp and white type mirror public/og/hero.png; the dark ramp is
-          the same hue taken down to navy. */}
-      <div className='min-h-lvh bg-linear-to-b from-sky-600 to-sky-800 p-4 font-sans text-white dark:from-sky-950 dark:to-slate-950'>
-        <div className='mx-auto max-w-[1000px] p-4'>
+      <div className='bg-canvas text-ink min-h-lvh font-sans antialiased'>
+        <div className='mx-auto max-w-[76rem] px-4 sm:px-6 lg:px-8'>
           <Header />
-          <Hero />
-          <MainContent />
+          <MainContent notFound={!isHome(window.location.pathname)} />
           <Footer />
         </div>
       </div>
