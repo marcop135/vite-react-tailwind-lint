@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="public/og/hero.png" alt="vite-react-tailwind-lint hero" width="900" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/brand/readme-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset=".github/brand/readme.png" />
+    <img src=".github/brand/readme.png" alt="Vite logo tile, the name Vite + React + Tailwind and the line React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes" width="900" />
+  </picture>
 </p>
 
 # Vite + React + Tailwind CSS Starter
@@ -8,16 +12,15 @@
 [![Release](https://img.shields.io/github/v/release/marcop135/vite-react-tailwind-lint)](https://github.com/marcop135/vite-react-tailwind-lint/releases)
 [![License: MIT](https://img.shields.io/github/license/marcop135/vite-react-tailwind-lint)](./LICENSE)
 
-A [Vite](https://vitejs.dev/) starter for React + Tailwind CSS with linting, formatting, tests, and a tagged-release pipeline already wired up.
+A [Vite](https://vitejs.dev/) starter for React + Tailwind CSS with linting, formatting, tests, and a tagged-release pipeline already wired up. Site: [vitereact.marcopontili.com](https://vitereact.marcopontili.com).
 
 Use this when you want a small React app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, Prettier, Vitest, Testing Library, Husky, and a release workflow yourself.
 
 ## Quick start
 
 ```bash
-npx degit marcop135/vite-react-tailwind-lint my-app
-cd my-app
-npm install
+git clone https://github.com/marcop135/vite-react-tailwind-lint.git my-app
+cd my-app && npm install
 npm run dev
 ```
 
@@ -62,9 +65,9 @@ src/
   App.jsx       root component
   main.jsx      entry, mounts <App />
   style.css     Tailwind directives
-public/         copied as-is to dist/ (favicons, OG image, site.webmanifest)
-docs/og/        hero source (SVG, render scripts, GitHub social preview PNG)
-scripts/        release helpers (bump-patch-maintenance, release-notes-from-changelog)
+public/         copied as-is to dist/ (favicons, OG image, .htaccess, privacy and 404 pages, matomo.js)
+.github/brand/  README, OG and social images (SVG sources, render script, fonts)
+scripts/        release helpers and stack-versions.mjs (lockfile versions for the landing page)
 index.html      Vite entry, references src/main.jsx
 vite.config.js  build + test config + bundle analyzer toggle
 ```
@@ -83,6 +86,10 @@ vite.config.js  build + test config + bundle analyzer toggle
 
 Production builds set `build.sourcemap: 'hidden'`: maps are produced for crash-reporting tooling but never referenced from the built JS. `vite build --mode development` (or `--mode analyze`) emits full referenced sourcemaps for local debugging. `dist/` and `coverage/` are build output, untracked, and not published.
 
+## Deployment
+
+The site at [vitereact.marcopontili.com](https://vitereact.marcopontili.com) is hosted on Netsons behind Cloudflare. `.github/workflows/deploy.yml` runs on every push to `main` (or a manual dispatch from `main`): it tests, builds, mirrors `dist/` to the FTP root over SFTP or FTPS, then purges the Cloudflare cache for the host. `public/.htaccess` sets the SPA fallback, security headers, CSP and caching. Analytics is a self-hosted, cookieless Matomo loaded from `public/matomo.js`; delete that file and its `<script>` tag in `index.html` when you use the starter.
+
 ## Releases
 
 Changes land on `develop`, then a release commit (`chore(release): vX.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
@@ -98,7 +105,6 @@ Two days ahead of it, `scheduled-npm-update.yml` opens an in-range `npm update` 
 ## Requirements
 
 - [Node.js](https://nodejs.org/en) v22.22.2+ (the 22 line is pinned in `.nvmrc`, run `nvm use`); Vite 8 sets that floor
-- [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`), only to scaffold
 
 ## Contributing
 

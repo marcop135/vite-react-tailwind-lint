@@ -4,6 +4,7 @@ import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 import { visualizer } from 'rollup-plugin-visualizer';
 import react from '@vitejs/plugin-react';
+import { stackVersions } from './scripts/stack-versions.mjs';
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -19,6 +20,10 @@ export default defineConfig(({ mode }) => ({
         brotliSize: true,
       }),
   ].filter(Boolean),
+  // Resolved at build time so the page never claims a version it does not ship.
+  define: {
+    __STACK_VERSIONS__: JSON.stringify(stackVersions()),
+  },
   build: {
     // Production hides sourcemaps from the bundled JS; dev and analyze builds
     // emit referenced sourcemaps so DevTools and the visualizer can use them.

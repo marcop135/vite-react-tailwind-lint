@@ -4,13 +4,14 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
+  { ignores: ['.github/brand/'] },
   {
     files: ['**/*.{js,mjs,cjs,jsx}'],
     ignores: ['node_modules/', 'dist/'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: globals.browser,
+      globals: { ...globals.browser, __STACK_VERSIONS__: 'readonly' },
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
