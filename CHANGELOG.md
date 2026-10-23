@@ -5,6 +5,16 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Link the README hero image to the site and trim the deployment and release sections.
+
+### Security
+
+- Bump vitest 4.1.12 and fast-uri 3.1.9.
+
 ## [1.11.4] - 2026-10-19
 
 ### Changed
