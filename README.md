@@ -1,9 +1,11 @@
 <p align="center">
+  <a href="https://vitereact.marcopontili.com">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/brand/readme-dark.png" />
     <source media="(prefers-color-scheme: light)" srcset=".github/brand/readme.png" />
     <img src=".github/brand/readme.png" alt="Vite logo tile, the name Vite + React + Tailwind and the line React, Tailwind and Vite, already linted and tested, beside stacked Tailwind CSS, React and Vite planes" width="900" />
   </picture>
+  </a>
 </p>
 
 # Vite + React + Tailwind CSS Starter
@@ -12,9 +14,11 @@
 [![Release](https://img.shields.io/github/v/release/marcop135/vite-react-tailwind-lint)](https://github.com/marcop135/vite-react-tailwind-lint/releases)
 [![License: MIT](https://img.shields.io/github/license/marcop135/vite-react-tailwind-lint)](./LICENSE)
 
-A [Vite](https://vitejs.dev/) starter for React + Tailwind CSS with linting, formatting, tests, and a tagged-release pipeline already wired up. Site: [vitereact.marcopontili.com](https://vitereact.marcopontili.com).
+A [Vite](https://vitejs.dev/) starter for React + Tailwind CSS with linting, formatting, tests, and a tagged-release pipeline already wired up.
 
 Use this when you want a small React app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, Prettier, Vitest, Testing Library, Husky, and a release workflow yourself.
+
+**Website:** [vitereact.marcopontili.com](https://vitereact.marcopontili.com)
 
 ## Quick start
 
@@ -88,19 +92,11 @@ Production builds set `build.sourcemap: 'hidden'`: maps are produced for crash-r
 
 ## Deployment
 
-The site at [vitereact.marcopontili.com](https://vitereact.marcopontili.com) is hosted on Netsons behind Cloudflare. `.github/workflows/deploy.yml` runs on every push to `main` (or a manual dispatch from `main`): it tests, builds, mirrors `dist/` to the FTP root over SFTP or FTPS, then purges the Cloudflare cache for the host. `public/.htaccess` sets the SPA fallback, security headers, CSP and caching. Analytics is a self-hosted, cookieless Matomo loaded from `public/matomo.js`; delete that file and its `<script>` tag in `index.html` when you use the starter.
+Pushes to `main` run `deploy.yml`: test, build, mirror `dist/` to Netsons over SFTP or FTPS, purge Cloudflare. `public/.htaccess` sets the SPA fallback, security headers and CSP. Analytics is cookieless self-hosted Matomo (`public/matomo.js`); drop that file and its `<script>` tag when you use the starter.
 
 ## Releases
 
-Changes land on `develop`, then a release commit (`chore(release): vX.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
-
-A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone (Dependabot security PRs target the default branch) cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
-
-Two days ahead of it, `scheduled-npm-update.yml` opens an in-range `npm update` PR on the 1st and 15th and auto-merges it once CI passes, so the release picks the bumps up unattended. Only major bumps still need a human.
-
-### Audit gate
-
-`release:check` blocks on production dependencies only (`npm run audit:prod`). CI additionally runs a non-blocking full-tree `npm audit` so dev-toolchain advisories stay visible without being able to freeze releases when upstream has not published a fix yet. Run `npm run audit:fix` to clear them.
+Changes land on `develop`; a `chore(release): vX.Y.Z` commit is tagged and merged up to `main`, and `release.yml` publishes the GitHub Release from [`CHANGELOG.md`](./CHANGELOG.md). Scheduled workflows open an in-range `npm update` PR on the 1st and 15th and cut a patch release on the 3rd and 17th; only major bumps need a human. `release:check` gates on production dependencies only; the full-tree `npm audit` in CI is advisory.
 
 ## Requirements
 
