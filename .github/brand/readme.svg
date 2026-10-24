@@ -12,7 +12,7 @@
     .tag { font-family: 'Cabin', sans-serif; font-weight: 400; font-size: 29px; fill: #2E2E35; }
     .kicker { font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 17px; letter-spacing: 2.5px; fill: #52525C; }
     .mono { font-family: 'Roboto Mono', monospace; font-weight: 400; font-size: 20px; }
-    .ok { fill: #D4D4DC; }
+    .ok { fill: #3F3F46; }
   </style>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -58,7 +58,7 @@
       <circle cx="2" cy="2" r="1.3" fill="#121216" fill-opacity="0.08"/>
     </pattern>
     <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.08"/>
     </filter>
     <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="10"/>
@@ -83,18 +83,18 @@
   <text class="tag" x="88" y="322" data-fit-w="640">Start fresh. Revitalize your next React project.</text>
 
   <g filter="url(#shadow)">
-    <rect x="88" y="372" width="600" height="182" rx="16" fill="#0E0E14" stroke="#2A2A35" stroke-width="1.5"/>
+    <rect x="88" y="372" width="600" height="182" rx="16" fill="#FFFFFF" stroke="#DDDCD6" stroke-width="1.5"/>
   </g>
   <circle cx="114" cy="398" r="6" fill="#FF5F57"/>
   <circle cx="134" cy="398" r="6" fill="#FEBC2E"/>
   <circle cx="154" cy="398" r="6" fill="#28C840"/>
-  <line x1="88" y1="420" x2="688" y2="420" stroke="#2A2A35" stroke-width="1.5"/>
-  <text class="mono" x="116" y="466"><tspan fill="#58C4DC">$</tspan><tspan fill="#ECECF1" dx="12">npm run release:check</tspan></text>
-    <path d="M120 512l5.5 5.5L135 503" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="144" y="519">lint</text>
-    <path d="M218.4 512l5.5 5.5L233.4 503" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="242.4" y="519">format</text>
-    <path d="M341 512l5.5 5.5L356 503" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="365" y="519">test</text>
-    <path d="M439.4 512l5.5 5.5L454.4 503" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="463.4" y="519">build</text>
-    <path d="M549.9 512l5.5 5.5L564.9 503" fill="none" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="573.9" y="519">audit</text>
+  <line x1="88" y1="420" x2="688" y2="420" stroke="#DDDCD6" stroke-width="1.5"/>
+  <text class="mono" x="116" y="466"><tspan fill="#0E7490">$</tspan><tspan fill="#121216" dx="12">npm run release:check</tspan></text>
+    <path d="M120 512l5.5 5.5L135 503" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="144" y="519">lint</text>
+    <path d="M218.4 512l5.5 5.5L233.4 503" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="242.4" y="519">format</text>
+    <path d="M341 512l5.5 5.5L356 503" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="365" y="519">test</text>
+    <path d="M439.4 512l5.5 5.5L454.4 503" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="463.4" y="519">build</text>
+    <path d="M549.9 512l5.5 5.5L564.9 503" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="mono ok" x="573.9" y="519">audit</text>
 
   <rect x="958.5" y="110" width="3" height="420" fill="url(#beam)"/>
   <g transform="translate(960 320) scale(1.32)">

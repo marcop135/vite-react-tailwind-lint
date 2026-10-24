@@ -20,18 +20,18 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className='flex min-h-screen items-center justify-center bg-gray-100 p-4'>
-          <div className='rounded-lg bg-white p-8 shadow-lg'>
-            <h1 className='mb-4 text-2xl font-bold text-red-600'>
+        <div className='bg-canvas text-ink flex min-h-lvh items-center justify-center p-4 font-sans'>
+          <div className='surface p-8'>
+            <h1 className='font-display mb-4 text-2xl font-bold'>
               Something went wrong
             </h1>
-            <p className='mb-4 text-gray-700'>
+            <p className='text-muted mb-4'>
               An error occurred while rendering this page.
             </p>
             <button
               type='button'
               onClick={() => window.location.reload()}
-              className='rounded bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2'
+              className='focus-ring bg-react text-canvas inline-flex min-h-11 items-center rounded-md px-4 font-semibold transition-opacity hover:opacity-90'
             >
               Reload Page
             </button>

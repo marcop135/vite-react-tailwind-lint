@@ -2,12 +2,21 @@ import React, { useEffect } from 'react';
 
 function NotFound() {
   // A client-rendered miss still answers 200, so keep it out of the index.
+  // index.html ships its own robots tag; override it rather than adding a
+  // second, conflicting one, and restore it on the way out.
   useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
+    let meta = document.querySelector('meta[name="robots"]');
+    const previous = meta?.content;
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'robots';
+      document.head.append(meta);
+    }
     meta.content = 'noindex';
-    document.head.append(meta);
-    return () => meta.remove();
+    return () => {
+      if (previous === undefined) meta.remove();
+      else meta.content = previous;
+    };
   }, []);
 
   return (
@@ -25,7 +34,7 @@ function NotFound() {
       </p>
       <a
         href='/'
-        className='focus-ring bg-bolt text-on-bolt mt-8 inline-flex min-h-11 items-center rounded-md px-5 font-semibold'
+        className='focus-ring bg-react text-canvas mt-8 inline-flex min-h-11 items-center rounded-md px-5 font-semibold transition-opacity hover:opacity-90'
       >
         Back to the home page
       </a>
