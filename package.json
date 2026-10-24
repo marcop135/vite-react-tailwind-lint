@@ -16,7 +16,6 @@
     "clean": "rm -rf dist coverage",
     "test": "vitest",
     "test:ci": "vitest run",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "audit": "npm audit",
     "audit:prod": "npm audit --omit=dev --audit-level=moderate",

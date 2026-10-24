@@ -94,6 +94,22 @@ describe('App', () => {
     expect(window.getSelection().toString()).toContain('git clone');
   });
 
+  it('overrides an existing robots tag off the home route and restores it', () => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'index, follow';
+    document.head.append(meta);
+    window.history.replaceState(null, '', '/missing');
+
+    const { unmount } = render(<App />);
+    expect(document.querySelectorAll('meta[name="robots"]')).toHaveLength(1);
+    expect(meta.content).toBe('noindex');
+
+    unmount();
+    expect(meta.content).toBe('index, follow');
+    meta.remove();
+  });
+
   it('renders a not-found view off the home route', () => {
     window.history.replaceState(null, '', '/missing');
     render(<App />);

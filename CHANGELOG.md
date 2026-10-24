@@ -5,6 +5,23 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Changed
+
+- Point `llms.txt` at the docs and the Markdown page.
+
+### Removed
+
+- Remove the `test:ui` script; its `@vitest/ui` dependency was never installed.
+
+### Fixed
+
+- Override the page's robots tag on the 404 view instead of adding a second one.
+- Theme the error screen and the 404 buttons for dark mode.
+- Restore the vertical spacing on the static 404 and privacy pages.
+- Keep the lockfile and pending `[Unreleased]` notes in step with scheduled patch releases.
+
 ## [1.12.0] - 2026-10-24
 
 ### Added

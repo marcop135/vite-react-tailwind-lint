@@ -110,7 +110,7 @@ jobs:
             echo "Branch ${BRANCH} already exists on origin — reusing."
           else
             git checkout -b "${BRANCH}"
-            git add package.json CHANGELOG.md
+            git add package.json package-lock.json CHANGELOG.md
             git commit -m "chore(release): v${VERSION}"
             git push origin "${BRANCH}"
           fi
