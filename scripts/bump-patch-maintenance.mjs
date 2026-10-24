@@ -20,7 +20,7 @@ function bumpPatch(semver) {
 }
 
 /**
- * Insert a new `section` block before the first existing `## [` heading,
+ * Insert a new `section` block before the first released `## [x.y.z]` heading,
  * collapsing surrounding blank lines so spacing stays consistent.
  *
  * @param {string} changelogBody - Full CHANGELOG.md contents.
@@ -28,7 +28,7 @@ function bumpPatch(semver) {
  * @returns {string} Updated CHANGELOG.md contents.
  */
 function prependChangelogBlock(changelogBody, section) {
-  const idx = changelogBody.search(/^## \[/mu);
+  const idx = changelogBody.search(/^## \[\d/mu);
   if (idx === -1) return `${changelogBody.trimEnd()}\n\n${section}\n`;
   const before = changelogBody.slice(0, idx);
   const after = changelogBody.slice(idx);
@@ -36,6 +36,7 @@ function prependChangelogBlock(changelogBody, section) {
 }
 
 const pkgPath = path.join(ROOT, 'package.json');
+const lockPath = path.join(ROOT, 'package-lock.json');
 const changelogPath = path.join(ROOT, 'CHANGELOG.md');
 
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
@@ -45,18 +46,39 @@ const newVersion = bumpPatch(previousVersion);
 pkg.version = newVersion;
 writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 
+// Keep the lockfile's own version in step, as `npm version` would.
+const lock = JSON.parse(readFileSync(lockPath, 'utf8'));
+lock.version = newVersion;
+if (lock.packages?.['']) lock.packages[''].version = newVersion;
+writeFileSync(lockPath, `${JSON.stringify(lock, null, 2)}\n`);
+
 const changelog = readFileSync(changelogPath, 'utf8');
-const isoDate = process.env.CHANGELOG_DATE ?? new Date().toISOString().slice(0, 10);
+const isoDate =
+  process.env.CHANGELOG_DATE ?? new Date().toISOString().slice(0, 10);
+const heading = `## [${newVersion}] - ${isoDate}`;
+const unreleased = /^## \[Unreleased\][^\n]*$/mu;
 
-const section = [
-  `## [${newVersion}] - ${isoDate}`,
-  '',
-  '- **Chore:** Automated maintenance patch via scheduled workflow; tag triggers the GitHub Release.',
-].join('\n');
+// Pending notes ship with this patch: date the Unreleased heading instead of
+// stacking a maintenance section above it.
+const updated = unreleased.test(changelog)
+  ? changelog.replace(unreleased, heading)
+  : prependChangelogBlock(
+      changelog,
+      [
+        heading,
+        '',
+        '### Changed',
+        '',
+        '- Update dependencies within their semver ranges.',
+      ].join('\n')
+    );
 
-writeFileSync(changelogPath, prependChangelogBlock(changelog, section));
+writeFileSync(changelogPath, updated);
 
 const outPath = process.env.GITHUB_OUTPUT;
 if (outPath) {
-  appendFileSync(outPath, `version=${newVersion}\nprevious_version=${previousVersion}\n`);
+  appendFileSync(
+    outPath,
+    `version=${newVersion}\nprevious_version=${previousVersion}\n`
+  );
 }
