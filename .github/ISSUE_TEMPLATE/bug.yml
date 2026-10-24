@@ -15,7 +15,7 @@ body:
       label: Steps to reproduce
       description: Exact commands or actions, starting from a fresh `git clone` if relevant.
       placeholder: |
-        1. git clone https://github.com/marcop135/vite-react-tailwind-lint.git my-app
+        1. git clone https://github.com/marcop135/revitail.git my-app
         2. cd my-app && npm install
         3. npm run ...
     validations:

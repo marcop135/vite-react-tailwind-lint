@@ -4,9 +4,9 @@
 @font-face {
   font-family: Catamaran;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-display: swap;
-  src: url('./assets/fonts/catamaran-v28-latin-800.woff2') format('woff2');
+  src: url('./assets/fonts/catamaran-v28-latin-700.woff2') format('woff2');
 }
 
 @font-face {
@@ -53,6 +53,8 @@
   --line: #dddcd6;
   --vite: #6d28d9;
   --react: #0e7490;
+  --brand-from: #087ea4;
+  --brand-to: #1190ba;
   --bolt: #ffc517;
   --on-bolt: #121216;
   --term: #111118;
@@ -70,6 +72,8 @@
     --line: #2a2a33;
     --vite: #b69cff;
     --react: #58c4dc;
+    --brand-from: #61dafb;
+    --brand-to: #149eca;
     --term: #08080c;
     --term-line: #2f2f3a;
   }
@@ -86,6 +90,8 @@
   --color-line: var(--line);
   --color-vite: var(--vite);
   --color-react: var(--react);
+  --color-brand-from: var(--brand-from);
+  --color-brand-to: var(--brand-to);
   --color-bolt: var(--bolt);
   --color-on-bolt: var(--on-bolt);
   --color-term: var(--term);

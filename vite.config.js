@@ -1,3 +1,4 @@
+import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import eslint from 'vite-plugin-eslint2';
@@ -20,6 +21,9 @@ export default defineConfig(({ mode }) => ({
         brotliSize: true,
       }),
   ].filter(Boolean),
+  resolve: {
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
+  },
   // Resolved at build time so the page never claims a version it does not ship.
   define: {
     __STACK_VERSIONS__: JSON.stringify(stackVersions()),

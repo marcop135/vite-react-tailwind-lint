@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from './Hero';
 import NotFound from './NotFound';
+import Closing from './Closing';
 
 const Stack = lazy(() => import('./Stack'));
 const Pipeline = lazy(() => import('./Pipeline'));
@@ -35,6 +36,7 @@ function MainContent({ notFound = false }) {
           <Suspense fallback={<Skeleton label='Loading scripts...' />}>
             <ScriptsTable />
           </Suspense>
+          <Closing />
         </>
       )}
     </main>
