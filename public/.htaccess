@@ -28,6 +28,8 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
+  # Discovery for agents and crawlers that never parse the HTML; mirrors the <link> tags in index.html.
+  Header always set Link "</index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\"; title=\"llms.txt\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
   # Self plus the self-hosted Matomo at mt.marcopontili.com, nothing else.
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://mt.marcopontili.com; connect-src 'self' https://mt.marcopontili.com; img-src 'self' data: https://mt.marcopontili.com; style-src 'self'; font-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 
@@ -48,9 +50,10 @@ ErrorDocument 404 /404.html
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType text/plain .txt
-  AddCharset utf-8 .html .css .js .txt .xml .webmanifest .json
+  AddType text/markdown .md
+  AddCharset utf-8 .html .css .js .txt .md .xml .webmanifest .json
 </IfModule>
 
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/javascript text/javascript application/json application/manifest+json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/plain text/markdown text/css text/xml application/xml application/javascript text/javascript application/json application/manifest+json image/svg+xml
 </IfModule>

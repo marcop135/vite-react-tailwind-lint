@@ -22,7 +22,7 @@ function Header() {
         className='focus-ring flex min-h-11 items-center gap-2.5 rounded-md font-mono text-sm font-bold tracking-tight'
       >
         <ViteLogo className='size-6' />
-        vite-react-tailwind-lint
+        Revitail
       </a>
       <nav aria-label='Primary'>
         <ul className='flex flex-wrap items-center gap-x-1 text-sm' role='list'>

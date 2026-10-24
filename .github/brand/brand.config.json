@@ -5,14 +5,18 @@
       "output": "readme.png",
       "width": 1280,
       "height": 640,
-      "scale": 2
+      "scale": 2,
+      "palette": true,
+      "maxBytes": 900000
     },
     {
       "source": "readme-dark.svg",
       "output": "readme-dark.png",
       "width": 1280,
       "height": 640,
-      "scale": 2
+      "scale": 2,
+      "palette": true,
+      "maxBytes": 900000
     },
     {
       "source": "social.svg",
@@ -26,7 +30,8 @@
       "output": "../../public/og/hero.png",
       "width": 1200,
       "height": 630,
-      "maxBytes": 300000
+      "maxBytes": 300000,
+      "palette": true
     }
   ]
 }
