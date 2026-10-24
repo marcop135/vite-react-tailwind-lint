@@ -6,6 +6,7 @@ const LINKS = [
   { href: LICENSE_URL, label: 'MIT License' },
   { href: PRIVACY_URL, label: 'Privacy' },
   { href: '/llms.txt', label: 'llms.txt' },
+  { href: '/index.md', label: 'Markdown' },
 ];
 
 function Footer() {

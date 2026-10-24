@@ -21,12 +21,12 @@ function ScriptsTable() {
       <div>
         <h2
           id='scripts-heading'
-          className='font-display text-4xl leading-none font-extrabold tracking-[-0.02em] sm:text-5xl'
+          className='font-display text-4xl leading-none font-bold tracking-[-0.02em] sm:text-5xl'
         >
           Scripts
         </h2>
         <p className='text-muted mt-4 max-w-sm'>
-          The five you will run most. The README lists the rest.
+          The five you will run most. The docs list the rest.
         </p>
       </div>
       <div className='surface overflow-x-auto'>

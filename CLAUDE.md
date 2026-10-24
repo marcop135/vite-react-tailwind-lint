@@ -4,7 +4,7 @@ Guidance for working in this repository.
 
 ## Project
 
-`vite-react-tailwind-lint` is a single-page React starter template. Stack: Vite 8, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netsons at `https://vitereact.marcopontili.com/`; the old Netlify host redirects there. Node 22 (`.nvmrc`); Vite 8 sets the real floor at 22.22.2.
+`revitail` is a single-page React starter template. Stack: Vite 8, React 19, Tailwind CSS v4, with ESLint, Stylelint, HTMLHint, Prettier, and Vitest wired in. Deployed to Netsons at `https://vitereact.marcopontili.com/`; the old Netlify host redirects there. Node 22 (`.nvmrc`); Vite 8 sets the real floor at 22.22.2.
 
 ## Commands
 
@@ -22,13 +22,13 @@ Guidance for working in this repository.
 
 - Entry: `index.html` mounts `#app`; `src/main.jsx` renders `<App>` (no `StrictMode` wrapper).
 - `src/App.jsx` composes `ErrorBoundary > Header > MainContent > Footer`; any path other than `/` renders `NotFound` (adds `noindex`).
-- `src/components/MainContent.jsx` renders `Hero` and lazy-loads `Stack`, `Pipeline` and `ScriptsTable` via `React.lazy` + `Suspense`.
-- The page is the starter's own pitch: `Hero` carries the value line, `Quickstart` (the `git clone` / `npm install` / `npm run dev` lines with per-line and copy-all buttons) and `StackIllustration`; `Stack` renders `#stack`, `Pipeline` renders `#pipeline` as a full-bleed dark band, `ScriptsTable` renders `#scripts`. The header nav links to the three anchors.
+- `src/components/MainContent.jsx` renders `Hero` and lazy-loads `Stack`, `Pipeline` and `ScriptsTable` via `React.lazy` + `Suspense`, then renders the static `Closing` call to action.
+- The page is the starter's own pitch: `Hero` carries the value line, `Quickstart` (the `git clone` / `npm install` / `npm run dev` lines with per-line and copy-all buttons) and `StackIllustration`; `Stack` renders `#stack`, `Pipeline` renders `#pipeline` as a full-bleed `--surface` band that follows the theme, `ScriptsTable` renders `#scripts`. The header nav links to the three anchors.
 - Copying lives in `src/hooks/useCopy.js` and degrades in three steps: Clipboard API, then `execCommand` over a selection, then leaving the command selected with a `press Ctrl+C` hint. Outcome is announced in a `role="status"` line whose height is reserved so it cannot shift the layout. All three paths are covered in `src/App.test.jsx`. Page copy is derived from `README.md`; keep the two in sync, and keep additions out unless they earn their space.
 - Version numbers are never typed into JSX: `scripts/stack-versions.mjs` reads them from `package-lock.json` (and `.nvmrc`), and `vite.config.js` / `vitest.config.js` inject them as `__STACK_VERSIONS__`, exposed as `VERSIONS` in `src/constants.js`. A dependency bump updates the page on the next build.
 - Styling is Tailwind utility classes inline in JSX. `src/style.css` holds the self-hosted fonts (Catamaran display, Cabin body, Roboto Mono; OFL texts in `src/assets/fonts/`), the semantic colour tokens, the `prefers-reduced-motion` reset and four `@utility` definitions: `surface`, `text-link`, `focus-ring`, `iso-plane`.
 - Shared strings (site, repo, license, author and privacy URLs, the quick start lines) live in `src/constants.js`. Import them instead of retyping a URL.
-- The look is a refined neutral base with Vite purple and yellow and React cyan as accents. Tokens are CSS custom properties (`--canvas`, `--surface`, `--ink`, `--muted`, `--line`, `--vite`, `--react`, `--bolt`, `--term*`) mapped into Tailwind with `@theme inline`; dark mode swaps the values under `prefers-color-scheme`, so components need no `dark:` variants for colour. Accent text uses `text-vite` / `text-react`, tuned for AA in both themes; the raw brand hexes are for fills and decoration only.
+- The look is a refined neutral base with Vite purple and yellow and React cyan as accents. Tokens are CSS custom properties (`--canvas`, `--surface`, `--ink`, `--muted`, `--line`, `--vite`, `--react`, `--brand-from`, `--brand-to`, `--bolt`, `--term*`) mapped into Tailwind with `@theme inline`; dark mode swaps the values under `prefers-color-scheme`, so components need no `dark:` variants for colour. Accent text uses `text-vite` / `text-react`, and the hero wordmark gradient uses `--brand-from` / `--brand-to`, all tuned for AA in both themes; the raw brand hexes are for fills and decoration only.
 - JSX uses the automatic runtime (`@vitejs/plugin-react`); `react/react-in-jsx-scope` is off, so do not add `import React` solely to render JSX. Components that use `React.memo` / `React.lazy` / `React.Component` still import React.
 
 ## Conventions

@@ -1,9 +1,9 @@
-# vite-react-tailwind-lint
+# Revitail
 
 > A Vite starter for React and Tailwind CSS with ESLint, Stylelint, HTMLHint, Prettier, Vitest, Husky pre-commit hooks and a tagged-release pipeline already wired up. MIT licensed.
 
 - Site: https://vitereact.marcopontili.com/
-- Repository: https://github.com/marcop135/vite-react-tailwind-lint
+- Repository: https://github.com/marcop135/revitail
 - Author: Marco Pontili, https://marcopontili.com
 
 ## When to use it
@@ -13,14 +13,14 @@ Use it to start a small single-page React app without configuring linting, forma
 ## Quick start
 
 ```bash
-git clone https://github.com/marcop135/vite-react-tailwind-lint.git my-app
+git clone https://github.com/marcop135/revitail.git my-app
 cd my-app && npm install
 npm run dev
 ```
 
 ## Docs
 
-- [README](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/README.md): stack, scripts, project layout, configuration, release flow
-- [CHANGELOG](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/CHANGELOG.md): release history
-- [CONTRIBUTING](https://github.com/marcop135/vite-react-tailwind-lint/blob/main/CONTRIBUTING.md): workflow and gates
+- [README](https://github.com/marcop135/revitail/blob/main/README.md): stack, scripts, project layout, configuration, release flow
+- [CHANGELOG](https://github.com/marcop135/revitail/blob/main/CHANGELOG.md): release history
+- [CONTRIBUTING](https://github.com/marcop135/revitail/blob/main/CONTRIBUTING.md): workflow and gates
 - [Privacy](https://vitereact.marcopontili.com/privacy.html): cookieless self-hosted Matomo, no cookies

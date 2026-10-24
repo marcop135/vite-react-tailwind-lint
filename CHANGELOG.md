@@ -5,6 +5,20 @@
 - **Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
 - **Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
 
+## [Unreleased]
+
+### Added
+
+- Add `docs/`.
+- Add an `@/` alias and `.env.example`.
+- Add a closing section to the site.
+
+### Changed
+
+- Rename the project to Revitail.
+- Restructure the README.
+- Refresh the brand images and the site hero.
+
 ## [1.11.5] - 2026-10-23
 
 ### Changed

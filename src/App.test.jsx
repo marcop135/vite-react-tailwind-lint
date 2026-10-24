@@ -2,7 +2,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';
 import App from './App';
-import { QUICKSTART, VERSIONS } from './constants';
+import { QUICKSTART, REPO_URL, VERSIONS } from './constants';
 
 afterEach(() => {
   cleanup();
@@ -13,12 +13,12 @@ afterEach(() => {
 const [CLONE] = QUICKSTART;
 
 describe('App', () => {
-  it('renders the value line as the only h1', () => {
+  it('renders the name and the value line as the only h1', () => {
     render(<App />);
     const headings = screen.getAllByRole('heading', { level: 1 });
     expect(headings).toHaveLength(1);
     expect(headings[0].textContent).toBe(
-      'React, Tailwind and Vite, already linted and tested.'
+      'Revitail: Start fresh. Revitalize your next React project.'
     );
   });
 
@@ -40,6 +40,20 @@ describe('App', () => {
     render(<App />);
     expect(await screen.findByText('From save to release')).toBeTruthy();
     expect(await screen.findByText('npm run release:check')).toBeTruthy();
+  });
+
+  it('closes with a link to the repo', async () => {
+    render(<App />);
+    expect(
+      await screen.findByRole('heading', {
+        name: 'Start your next app on Revitail',
+      })
+    ).toBeTruthy();
+    expect(
+      screen
+        .getByRole('link', { name: 'Get it on GitHub' })
+        .getAttribute('href')
+    ).toBe(REPO_URL);
   });
 
   it('copies one command and confirms it', async () => {

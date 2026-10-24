@@ -1,6 +1,6 @@
 {
-  "name": "vite-react-tailwind-lint",
-  "short_name": "vrt-lint",
+  "name": "Revitail",
+  "short_name": "Revitail",
   "description": "A Vite starter for React and Tailwind CSS with ESLint, Stylelint, HTMLHint, Prettier, Vitest and a tagged-release pipeline already wired up.",
   "icons": [
     {

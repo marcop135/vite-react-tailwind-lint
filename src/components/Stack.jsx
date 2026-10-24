@@ -66,7 +66,7 @@ function Stack() {
       <div className='mb-10 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-end'>
         <h2
           id='stack-heading'
-          className='font-display text-4xl leading-none font-extrabold tracking-[-0.02em] sm:text-5xl'
+          className='font-display text-4xl leading-none font-bold tracking-[-0.02em] sm:text-5xl'
         >
           What is wired in
         </h2>

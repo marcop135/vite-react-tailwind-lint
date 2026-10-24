@@ -15,7 +15,7 @@ function NotFound() {
       <p className='text-muted font-mono text-sm'>404</p>
       <h1
         id='not-found-heading'
-        className='font-display mt-2 text-5xl leading-none font-extrabold tracking-[-0.02em]'
+        className='font-display mt-2 text-5xl leading-none font-bold tracking-[-0.02em]'
       >
         Nothing at this address.
       </h1>

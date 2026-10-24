@@ -19,14 +19,20 @@ function Hero() {
         </p>
         <h1
           id='hero-heading'
-          className='font-display text-ink/85 text-[2.75rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-balance sm:text-6xl lg:text-7xl'
+          className='font-display text-ink/85 text-6xl leading-[0.95] font-bold tracking-[-0.03em] text-balance sm:text-7xl lg:text-8xl'
         >
-          React, Tailwind and Vite, already linted and tested.
+          <span className='from-brand-from to-brand-to -ml-[0.06em] inline-block bg-linear-to-r bg-clip-text text-transparent'>
+            Revitail
+          </span>
+          <span className='sr-only'>: </span>
+          <span className='text-muted mt-4 block font-sans text-2xl leading-snug font-normal tracking-normal sm:text-3xl'>
+            Start fresh. Revitalize your next React project.
+          </span>
         </h1>
         <p className='text-muted mt-6 max-w-xl text-lg text-pretty'>
-          A Vite starter for React and Tailwind CSS with ESLint, Stylelint,
-          HTMLHint, Prettier, Vitest and a tagged-release pipeline wired in and
-          passing.
+          React {major(VERSIONS.react)}, Vite {major(VERSIONS.vite)} and
+          Tailwind CSS {major(VERSIONS.tailwindcss)}, with linters, tests and CI
+          already wired up and passing.
         </p>
       </div>
       <div className='w-full lg:col-span-2 lg:row-start-2'>
